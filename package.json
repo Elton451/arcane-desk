@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "next": "16.2.1",
@@ -19,6 +21,10 @@
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -27,9 +33,12 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "husky": "^8.0.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "lint-staged": "16.4.0",
     "prettier": "3.8.1",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
