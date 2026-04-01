@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Negotiator from "negotiator";
 import { match } from "@formatjs/intl-localematcher";
+import { getServerSession } from "next-auth/next";
 
 const locales = ["en-US", "pt-BR"];
 const defaultLocale = "en-US";
@@ -15,8 +16,14 @@ function getLocale(request: NextRequest) {
   return match(languages, locales, defaultLocale);
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const session = await getServerSession();
+
+  if (!session) {
+    return NextResponse.redirect("/api/auth/callback/auth0");
+  }
+
   const pathnameHasLocale = locales.some(
     (locale) => pathname.includes(`/${locale}/`) || pathname === `/${locale}`,
   );
@@ -29,5 +36,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next).*)"],
+  matcher: ["/((?!_next|api|favicon.ico|en-US/login|pt-BR/login).*)"],
 };
