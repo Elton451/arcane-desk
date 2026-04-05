@@ -1,4 +1,12 @@
 {
+  "navbar": {
+    "campaigns": "Campanhas",
+    "dashboard": "Dashboard",
+    "session_review": "Diário de sessão",
+    "npc_creation": "Criação de NPC",
+    "notes": "Notas",
+    "world_building": "Criação de Mundo"
+  },
   "home": {
     "title": "Título da Homepage em PT"
   }

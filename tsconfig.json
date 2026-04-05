@@ -28,7 +28,8 @@
       "@shared/assets/*": ["./shared/assets/*"],
       "@shared/components/*": ["./shared/components/*"],
       "@shared/hooks/*": ["./shared/hooks/*"],
-      "@shared/utils/*": ["./shared/utils/*"]
+      "@shared/utils/*": ["./shared/utils/*"],
+      "@shared/components/ui/*": ["./shared/components/ui/*"]
     }
   },
   "include": [

@@ -1,4 +1,15 @@
 {
+  "navbar": {
+    "campaigns": "Campaigns",
+    "dashboard": "Dashboard",
+    "session_review": "Session Review",
+    "npc_creation": "NPC Creation",
+    "notes": "Notes",
+    "world_building": "World Building",
+    "current_campaign": "Current Campaign",
+    "change_campaign": "Change Campaign",
+    "view_profile": "View Profile"
+  },
   "home": {
     "title": "Home Page Title in EN"
   }
