@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Negotiator from "negotiator";
 import { match } from "@formatjs/intl-localematcher";
-import { getServerSession } from "next-auth/next";
+import { auth0 } from "./lib/auth0";
 
 const locales = ["en-US", "pt-BR"];
 const defaultLocale = "en-US";
@@ -17,24 +17,35 @@ function getLocale(request: NextRequest) {
 }
 
 export async function proxy(request: NextRequest) {
+  const authRes = await auth0.middleware(request);
   const { pathname } = request.nextUrl;
-  const session = await getServerSession();
+
+  if (request.nextUrl.pathname.startsWith("/auth")) {
+    return authRes;
+  }
+
+  const session = await auth0.getSession();
+  console.log("🪚 session:", session);
 
   if (!session) {
-    return NextResponse.redirect("/api/auth/callback/auth0");
+    return NextResponse.redirect(`/auth/login`);
   }
 
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.includes(`/${locale}/`) || pathname === `/${locale}`,
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) return;
 
   const locale = getLocale(request);
+  console.log("🪚 locale:", locale);
   request.nextUrl.pathname = `/${locale}${pathname}`;
+
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|favicon.ico|en-US/login|pt-BR/login).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+  ],
 };
