@@ -7,43 +7,45 @@ const locales = ["en-US", "pt-BR"];
 const defaultLocale = "en-US";
 
 function getLocale(request: NextRequest) {
-	const headers: Record<string, string> = {};
-	request.headers.forEach((value, key) => (headers[key] = value));
+  const headers: Record<string, string> = {};
+  request.headers.forEach((value, key) => (headers[key] = value));
 
-	const negotiator = new Negotiator({ headers });
-	const languages = negotiator.languages();
+  const negotiator = new Negotiator({ headers });
+  const languages = negotiator.languages();
 
-	return match(languages, locales, defaultLocale);
+  return match(languages, locales, defaultLocale);
 }
 
 export async function proxy(request: NextRequest) {
-	const authRes = await auth0.middleware(request);
-	const { pathname } = request.nextUrl;
+  const authRes = await auth0.middleware(request);
+  const { pathname } = request.nextUrl;
 
-	if (request.nextUrl.pathname.startsWith("/auth")) {
-		return authRes;
-	}
+  if (request.nextUrl.pathname.startsWith("/auth")) {
+    return authRes;
+  }
 
-	const session = await auth0.getSession();
+  const session = await auth0.getSession();
 
-	if (!session) {
-		return NextResponse.redirect(`/auth/login`);
-	}
+  if (!session) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
+  }
 
-	const pathnameHasLocale = locales.some(
-		(locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-	);
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  );
 
-	if (pathnameHasLocale) return;
+  if (pathnameHasLocale) return;
 
-	const locale = getLocale(request);
-	request.nextUrl.pathname = `/${locale}${pathname}`;
+  const locale = getLocale(request);
+  request.nextUrl.pathname = `/${locale}${pathname}`;
 
-	return NextResponse.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-	matcher: [
-		"/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
-	],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+  ],
 };

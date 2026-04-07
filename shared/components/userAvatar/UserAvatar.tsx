@@ -1,46 +1,99 @@
 "use client";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { Dictionary } from "@/shared/types/i18n";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/shared/components/ui/avatar";
+import { IUserDTO } from "@/shared/api/models/IUser";
 
 interface UserAvatarProps {
   dict: Dictionary;
-  user: IUserDTO;
+  user: IUserDTO | null;
 }
 
 const UserAvatar = ({ dict, user }: UserAvatarProps) => {
-  const initials = user.name
-    .split(" ")
-    .map((word) => word[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  if (!user) {
+    return;
+  }
+
+  const initials =
+    user.name &&
+    user.name
+      .split(" ")
+      .map((word) => word[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+
+  const profileLabel = [user.name, dict.navbar.view_profile]
+    .filter(Boolean)
+    .join(" — ");
 
   return (
-    <div className="flex items-center gap-3 px-3 py-2">
-      <Avatar className="h-9 w-9 shrink-0">
-        {user.image && <AvatarImage src={user.image} alt={user.name} />}
-        <AvatarFallback className="bg-accent text-accent-foreground font-semibold text-sm">
+    <Link
+      href="/profile"
+      aria-label={profileLabel}
+      className={cn(
+        "flex items-center gap-3",
+        "rounded-none border-t border-b px-3 py-2",
+        "transition-colors duration-200 outline-none",
+        "hover:bg-accent/40",
+        "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2",
+      )}
+    >
+      <Avatar
+        className={cn(
+          "h-9 w-9 shrink-0",
+          "transition-[box-shadow,transform] duration-200",
+          "hover:ring-primary/60 group-hover/avatar:ring-2 hover:scale-[1.03]",
+          "hover:shadow-[0_0_18px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]",
+        )}
+      >
+        {user.image && (
+          <AvatarImage
+            src={user.image}
+            alt=""
+            className={cn(
+              "transition-[filter] duration-200",
+              "hover:brightness-110",
+            )}
+          />
+        )}
+        <AvatarFallback
+          className={cn(
+            "bg-accent text-accent-foreground text-sm font-semibold",
+            "transition-[filter] duration-200",
+            "hover:brightness-110",
+          )}
+        >
           {initials}
         </AvatarFallback>
       </Avatar>
 
-      <div className="flex flex-col min-w-0">
-        <span className="text-sm font-semibold leading-tight truncate">
+      <div className="flex min-w-0 flex-col">
+        <span
+          className={cn(
+            "truncate text-sm leading-tight font-semibold",
+            "transition-colors duration-200",
+            "group-hover/avatar:text-accent-text",
+          )}
+        >
           {user.name}
         </span>
-        <Link
-          href={`/profile`}
-          className="text-xs text-text-secondary hover:text-accent-text transition-colors duration-150 leading-snug"
+        <span
+          className={cn(
+            "text-text-secondary text-xs leading-snug",
+            "transition-colors duration-150",
+            "hover:text-accent-text",
+          )}
         >
           {dict.navbar.view_profile}
-        </Link>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

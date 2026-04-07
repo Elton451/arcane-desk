@@ -5,7 +5,10 @@
     "session_review": "Diário de sessão",
     "npc_creation": "Criação de NPC",
     "notes": "Notas",
-    "world_building": "Criação de Mundo"
+    "world_building": "Criação de Mundo",
+    "view_profile": "Visualizar perfil",
+    "current_campaign": "Campanha atual",
+    "change_campaign": "Mudar campanha"
   },
   "home": {
     "title": "Título da Homepage em PT"
