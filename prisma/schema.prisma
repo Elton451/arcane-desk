@@ -21,6 +21,8 @@ model User {
 	createdAt DateTime @default(now())
 	displayName String?
 	username String @unique
+
+	campaigns Campaign[]
 }
 
 model Account {
@@ -56,4 +58,14 @@ model VerificationToken {
 	expires DateTime
 
 	@@unique([identifier, token])
+}
+
+model Campaign {
+	id Int @id @default(autoincrement())
+	name String
+	description String?
+	createdAt DateTime @default(now())
+	system String?
+	ownerId String
+	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
