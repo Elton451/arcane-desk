@@ -38,9 +38,9 @@ const UserAvatar = ({ dict, user }: UserAvatarProps) => {
       aria-label={profileLabel}
       className={cn(
         "flex items-center gap-3",
-        "rounded-none border-t border-b px-3 py-2",
+        "rounded-none border-t border-b px-3 py-5",
         "transition-colors duration-200 outline-none",
-        "hover:bg-accent/40",
+        "hover:bg-secondary/40",
         "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2",
       )}
     >

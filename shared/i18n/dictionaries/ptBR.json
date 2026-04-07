@@ -1,5 +1,6 @@
 {
   "navbar": {
+    "subtitle": "Gerenciador de campanhas",
     "campaigns": "Campanhas",
     "dashboard": "Dashboard",
     "session_review": "Diário de sessão",
@@ -8,7 +9,8 @@
     "world_building": "Criação de Mundo",
     "view_profile": "Visualizar perfil",
     "current_campaign": "Campanha atual",
-    "change_campaign": "Mudar campanha"
+    "change_campaign": "Mudar campanha",
+    "logout": "Deslogar"
   },
   "home": {
     "title": "Título da Homepage em PT"

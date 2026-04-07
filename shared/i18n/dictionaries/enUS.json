@@ -1,5 +1,6 @@
 {
   "navbar": {
+    "subtitle": "Campaign Manager",
     "campaigns": "Campaigns",
     "dashboard": "Dashboard",
     "session_review": "Session Review",
@@ -8,7 +9,8 @@
     "world_building": "World Building",
     "current_campaign": "Current Campaign",
     "change_campaign": "Change Campaign",
-    "view_profile": "View Profile"
+    "view_profile": "View Profile",
+    "logout": "Logout"
   },
   "home": {
     "title": "Home Page Title in EN"

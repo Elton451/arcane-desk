@@ -9,7 +9,7 @@ import {
 import navbarLinks from "./navbarLinks";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { ArrowLeft, LogOutIcon } from "lucide-react";
+import { ArrowLeft, LogOutIcon, Sparkles } from "lucide-react";
 import { Button } from "../ui/button";
 import UserAvatar from "../userAvatar/UserAvatar";
 import { IUserDTO } from "@/shared/api/models/IUser";
@@ -37,40 +37,49 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
 
   return (
     <Sidebar variant="floating">
-      <SidebarHeader>
-        <div className="flex">
-          <h1 className="font-spectral text-xl">Arcane Desk</h1>
+      {/* ── Header ── */}
+      <SidebarHeader className="px-5 py-5">
+        <div className="flex items-center gap-2">
+          <Sparkles aria-hidden className="text-primary size-5 shrink-0" />
+          <div>
+            <h1 className="font-spectral text-foreground text-lg leading-tight">
+              Arcane Desk
+            </h1>
+            <span className="font-lato text-muted-foreground text-xs">
+              {navbarDict.subtitle}
+            </span>
+          </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
-        {<UserAvatar dict={dict} user={user} />}
+
+      <SidebarContent className="gap-0 px-3">
+        <div className="mb-2">
+          <UserAvatar dict={dict} user={user} />
+        </div>
 
         {isInCampaign && (
-          <div className="border-b">
-            <div className="mb-3 px-3">
-              <p className="text-text-muted mb-1 text-xs font-semibold tracking-widest uppercase">
-                {navbarDict.current_campaign}
-              </p>
-              <p className="text-accent-text font-mono text-sm leading-snug font-semibold">
-                {campaignName}
-              </p>
-              <Button
-                className="flex w-full items-center gap-3 rounded-full px-3 py-2.5 font-mono text-sm transition-colors"
-                variant="ghost"
-              >
-                <Link
-                  href="/campaigns"
-                  className="text-text-secondary hover:text-accent-text inline-flex items-center gap-1 text-xs transition-colors duration-150"
-                >
-                  <ArrowLeft className="h-3 w-3" />
-                  {navbarDict.change_campaign}
-                </Link>
-              </Button>
-            </div>
+          <div className="border-sidebar-border mb-3 border-b pb-3">
+            <p className="text-muted-foreground mb-1 px-2 text-xs font-semibold tracking-widest uppercase">
+              {navbarDict.current_campaign}
+            </p>
+            <p className="text-primary font-spectral px-2 text-sm leading-snug font-semibold">
+              {campaignName}
+            </p>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground mt-1 h-7 w-full justify-start gap-1.5 rounded-md px-2 text-xs"
+              asChild
+            >
+              <Link href="/campaigns">
+                <ArrowLeft aria-hidden className="size-3 shrink-0" />
+                {navbarDict.change_campaign}
+              </Link>
+            </Button>
           </div>
         )}
 
-        <nav className="flex flex-col gap-1 px-2">
+        <nav className="flex flex-col gap-0.5">
           {navbarLinks(dict, Boolean(isInCampaign)).map((route) => {
             const href = `/${lang}${route.href}`;
             const active = isRouteActive(route.href);
@@ -80,16 +89,13 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
                 key={route.href}
                 href={href}
                 className={cn(
-                  "flex items-center gap-3 rounded-full px-3 py-2.5 font-mono text-sm transition-colors",
+                  "font-lato flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors duration-150",
                   active
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                    : "text-sidebar-foreground/75 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+                    ? "bg-sidebar-primary text-sidebar-primary-foreground font-medium"
+                    : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground",
                 )}
               >
-                <Icon
-                  aria-hidden
-                  className="size-[1.125rem] shrink-0 opacity-90"
-                />
+                <Icon aria-hidden className="size-4 shrink-0" />
                 {route.label}
               </Link>
             );
@@ -97,14 +103,16 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
         </nav>
       </SidebarContent>
 
-      <SidebarFooter>
+      <SidebarFooter className="px-3 pb-4">
         <Button
           variant="ghost"
-          className="flex items-center gap-3 rounded-full px-3 py-2.5 font-mono text-sm transition-colors"
+          size="sm"
+          className="text-muted-foreground hover:text-foreground w-full justify-start gap-3 rounded-md px-3 py-2.5 text-sm"
+          asChild
         >
-          <LogOutIcon />
           <a target="_blank" href="/auth/logout">
-            Deslogar
+            <LogOutIcon aria-hidden className="size-4 shrink-0" />
+            {navbarDict.logout}
           </a>
         </Button>
       </SidebarFooter>
