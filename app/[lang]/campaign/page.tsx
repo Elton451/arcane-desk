@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { CalendarDays, CirclePlay, Clock3, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 import { Button } from "@/shared/components/ui/button";
-import { cn } from "@/lib/utils";
+import { CampaignCard } from "@/features/campaign/components/CampaignCard";
 import { ICampaign } from "@/shared/api/models/ICampaign";
 import { getDictionary, Locale } from "@/shared/i18n/dictionaries";
 import { Params } from "@/shared/types/params.type";
@@ -106,56 +105,17 @@ const CampaignsPage = async ({ params }: CampaignPageProps) => {
         <ul className="mt-8 grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {campaigns.map((campaign) => (
             <li key={campaign.id} className="list-none">
-              <article
-                className={cn(
-                  "border-border/80 bg-card/90 h-full rounded-xl border p-5 shadow-[0_10px_28px_rgba(0,0,0,0.2)] transition-colors",
-                  "hover:border-accent/40",
-                )}
-              >
-                <div className="space-y-3">
-                  <h2 className="text-accent max-w-[24ch] text-2xl leading-tight font-semibold tracking-tight">
-                    {campaign.name}
-                  </h2>
-
-                  <p className="text-foreground/90 min-h-14 max-w-[40ch] text-sm leading-relaxed">
-                    {campaign.description}
-                  </p>
-                </div>
-
-                <div className="bg-border/80 my-4 h-px" />
-
-                <dl className="text-muted-foreground space-y-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <dt>
-                      <CalendarDays className="size-4" />
-                    </dt>
-                    <dd>
-                      {campaignDict.created_at}: {campaign.createdAt.toString()}
-                    </dd>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <dt>
-                      <Clock3 className="size-4" />
-                    </dt>
-                    <dd>
-                      {campaignDict.last_played_at}:{" "}
-                      {/* campaign.lastPlayedAt */}
-                    </dd>
-                  </div>
-                </dl>
-
-                <Button
-                  asChild
-                  variant="secondary"
-                  size="sm"
-                  className="border-border/80 bg-secondary/55 text-secondary-foreground hover:bg-secondary/80 mt-4 w-full border"
-                >
-                  <Link href={`/campaign/${campaign.id}`}>
-                    <CirclePlay className="size-4" />
-                    {campaignDict.continue_campaign}
-                  </Link>
-                </Button>
-              </article>
+              <CampaignCard
+                id={campaign.id}
+                name={campaign.name}
+                description={campaign.description ?? ""}
+                createdAt={campaign.createdAt}
+                labels={{
+                  createdAt: campaignDict.created_at,
+                  lastPlayedAt: campaignDict.last_played_at,
+                  continueCampaign: campaignDict.continue_campaign,
+                }}
+              />
             </li>
           ))}
         </ul>
