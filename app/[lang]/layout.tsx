@@ -42,16 +42,11 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`h-full antialiased ${lato.variable} ${spectral.variable}`}
-      data-theme="monokai"
+      data-theme="nord"
     >
       <body className="flex min-h-full flex-col">
         <SidebarProvider>
-          <Navbar
-            user={currentUser}
-            dict={dict}
-            campaignId={5}
-            campaignName={"Kintargo"}
-          />
+          <Navbar user={currentUser} dict={dict} />
           {children}
         </SidebarProvider>
       </body>

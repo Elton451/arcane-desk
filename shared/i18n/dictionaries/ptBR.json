@@ -14,5 +14,13 @@
   },
   "home": {
     "title": "Título da Homepage em PT"
+  },
+  "campaign": {
+    "select_campaign": "Selecione a campanha",
+    "select_campaign_description": "Selecione a campanha para continuar sua aventura",
+    "create_new_campaign": "Criar nova campanha",
+    "created_at": "Criada em",
+    "last_played_at": "Ultima vez jogada em",
+    "continue_campaign": "Continuar campanha"
   }
 }

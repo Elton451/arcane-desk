@@ -53,7 +53,7 @@ const navbarLinks = (
 
   return [
     {
-      href: "/campaigns",
+      href: "/campaign",
       label: navbarDict.campaigns,
       icon: FolderKanban,
     },

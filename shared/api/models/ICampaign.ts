@@ -1,6 +1,6 @@
 import { IUserDTO } from "./IUser";
 
-export interface Campaign {
+export interface ICampaign {
   id: number;
   name: string;
   description?: string;

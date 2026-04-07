@@ -14,5 +14,13 @@
   },
   "home": {
     "title": "Home Page Title in EN"
+  },
+  "campaign": {
+    "select_campaign": "Select Your Campaign",
+    "select_campaign_description": "Choose a campaign to continue your adventure",
+    "create_new_campaign": "Create New Campaign",
+    "created_at": "Created at",
+    "last_played_at": "Last played at",
+    "continue_campaign": "Continue Campaign"
   }
 }
