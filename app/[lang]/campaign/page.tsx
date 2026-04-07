@@ -97,7 +97,7 @@ const CampaignsPage = async ({ params }: CampaignPageProps) => {
         <Button
           variant="outline"
           size="sm"
-          className="border-accent/40 bg-accent/70 text-accent-foreground hover:bg-accent/80 mt-6 px-4 shadow-xs"
+          className="border-accent/40 bg-accent/70 text-primary hover:bg-accent/80 mt-6 px-4 shadow-xs"
         >
           <Plus className="size-4" />
           {campaignDict.create_new_campaign}
