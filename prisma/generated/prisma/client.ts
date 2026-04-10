@@ -66,3 +66,8 @@ export type Session = Prisma.SessionModel;
  *
  */
 export type VerificationToken = Prisma.VerificationTokenModel;
+/**
+ * Model Campaign
+ *
+ */
+export type Campaign = Prisma.CampaignModel;

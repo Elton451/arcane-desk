@@ -21,6 +21,15 @@
     "create_new_campaign": "Criar nova campanha",
     "created_at": "Criada em",
     "last_played_at": "Ultima vez jogada em",
-    "continue_campaign": "Continuar campanha"
+    "continue_campaign": "Continuar campanha",
+    "form_dialog_title": "Criar nova campanha",
+    "form_dialog_title": "Criar nova campanha",
+    "form_dialog_subtitle": "Comece uma nova aventura. Dê à sua campanha um nome e uma descrição memoráveis.",
+    "label_name": "Nome da campanha",
+    "label_description": "Descrição",
+    "placeholder_name": "Digite o nome da campanha",
+    "placeholder_description": "Sobre o que é essa campanha?",
+    "campaign_created_successfully": "Campanha {name} criada com sucesso",
+    "error_creating_campaign": "Erro ao criar campanha"
   }
 }

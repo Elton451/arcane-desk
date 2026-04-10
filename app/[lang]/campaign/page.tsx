@@ -1,10 +1,8 @@
-import { Plus } from "lucide-react";
-
-import { Button } from "@/shared/components/ui/button";
 import { CampaignCard } from "@/features/campaign/components/CampaignCard";
 import { ICampaign } from "@/shared/api/models/ICampaign";
-import { getDictionary, Locale } from "@/shared/i18n/dictionaries";
+import { getDictionary } from "@/shared/i18n/dictionaries";
 import { Params } from "@/shared/types/params.type";
+import CreateCampaignModal from "@/features/campaign/components/CampaignCreateModal/CampaignCreateModal";
 
 const campaigns: ICampaign[] = [
   {
@@ -93,14 +91,7 @@ const CampaignsPage = async ({ params }: CampaignPageProps) => {
           </p>
         </header>
 
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-accent/40 bg-accent/70 text-primary hover:bg-accent/80 mt-6 px-4 shadow-xs"
-        >
-          <Plus className="size-4" />
-          {campaignDict.create_new_campaign}
-        </Button>
+        <CreateCampaignModal dict={dict} />
 
         <ul className="mt-8 grid w-full grid-cols-1 gap-5 md:grid-cols-3">
           {campaigns.map((campaign) => (

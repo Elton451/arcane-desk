@@ -7,6 +7,7 @@ import { getDictionary } from "@/shared/i18n/dictionaries";
 import { auth0 } from "@/lib/auth0";
 import { prisma } from "@/lib/prisma";
 import { IUserDTO } from "@/shared/api/models/IUser";
+import { Toaster } from "sonner";
 
 export default async function RootLayout({
   children,
@@ -48,6 +49,7 @@ export default async function RootLayout({
         <SidebarProvider>
           <Navbar user={currentUser} dict={dict} />
           {children}
+          <Toaster />
         </SidebarProvider>
       </body>
     </html>

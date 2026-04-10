@@ -416,6 +416,7 @@ export const ModelName = {
   Account: "Account",
   Session: "Session",
   VerificationToken: "VerificationToken",
+  Campaign: "Campaign",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -437,7 +438,12 @@ export type TypeMap<
     omit: GlobalOmitOptions;
   };
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken";
+    modelProps:
+      | "user"
+      | "account"
+      | "session"
+      | "verificationToken"
+      | "campaign";
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
@@ -745,6 +751,82 @@ export type TypeMap<
         };
       };
     };
+    Campaign: {
+      payload: Prisma.$CampaignPayload<ExtArgs>;
+      fields: Prisma.CampaignFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.CampaignFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.CampaignFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        findFirst: {
+          args: Prisma.CampaignFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.CampaignFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        findMany: {
+          args: Prisma.CampaignFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>[];
+        };
+        create: {
+          args: Prisma.CampaignCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        createMany: {
+          args: Prisma.CampaignCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.CampaignCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>[];
+        };
+        delete: {
+          args: Prisma.CampaignDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        update: {
+          args: Prisma.CampaignUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        deleteMany: {
+          args: Prisma.CampaignDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.CampaignUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.CampaignUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>[];
+        };
+        upsert: {
+          args: Prisma.CampaignUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignPayload>;
+        };
+        aggregate: {
+          args: Prisma.CampaignAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaign>;
+        };
+        groupBy: {
+          args: Prisma.CampaignGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.CampaignGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.CampaignCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.CampaignCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -836,6 +918,18 @@ export const VerificationTokenScalarFieldEnum = {
 
 export type VerificationTokenScalarFieldEnum =
   (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum];
+
+export const CampaignScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  description: "description",
+  createdAt: "createdAt",
+  system: "system",
+  ownerId: "ownerId",
+} as const;
+
+export type CampaignScalarFieldEnum =
+  (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",
@@ -1033,6 +1127,7 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit;
   session?: Prisma.SessionOmit;
   verificationToken?: Prisma.VerificationTokenOmit;
+  campaign?: Prisma.CampaignOmit;
 };
 
 /* Types for Logging */

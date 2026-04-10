@@ -58,6 +58,7 @@ export const ModelName = {
   Account: "Account",
   Session: "Session",
   VerificationToken: "VerificationToken",
+  Campaign: "Campaign",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -128,6 +129,18 @@ export const VerificationTokenScalarFieldEnum = {
 
 export type VerificationTokenScalarFieldEnum =
   (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum];
+
+export const CampaignScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  description: "description",
+  createdAt: "createdAt",
+  system: "system",
+  ownerId: "ownerId",
+} as const;
+
+export type CampaignScalarFieldEnum =
+  (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",
