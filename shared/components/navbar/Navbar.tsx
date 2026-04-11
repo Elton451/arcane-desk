@@ -24,11 +24,13 @@ interface NavbarProps {
 
 const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
   const navbarDict = dict.navbar;
-  const isInCampaign = campaignId && campaignName;
+  const isInCampaign = campaignId;
   const pathname = usePathname();
   const params = useParams();
   const lang =
     typeof params.lang === "string" ? params.lang : (params.lang?.[0] ?? "en");
+
+  console.log("ID campanha", campaignId);
 
   const pathForMatch =
     pathname.replace(new RegExp(`^/${lang}(?=/|$)`), "") || "/";

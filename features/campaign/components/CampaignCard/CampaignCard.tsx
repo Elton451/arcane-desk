@@ -74,7 +74,7 @@ const CampaignCard = ({
         size="sm"
         className="border-border/80 bg-secondary/55 text-secondary-foreground hover:bg-secondary/80 mt-4 w-full border"
       >
-        <Link href={`/campaign/${id}`}>
+        <Link href={`/campaign/${id}/dashboard`}>
           <CirclePlay className="size-4" />
           {labels.continueCampaign}
         </Link>
