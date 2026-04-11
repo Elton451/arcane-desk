@@ -1,4 +1,8 @@
 {
+  "common": {
+    "previous": "Anterior",
+    "next": "Próximo"
+  },
   "navbar": {
     "subtitle": "Gerenciador de campanhas",
     "campaigns": "Campanhas",

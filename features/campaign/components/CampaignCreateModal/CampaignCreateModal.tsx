@@ -11,7 +11,7 @@ import {
 import { Dictionary } from "@/shared/types/i18n";
 import CampaignForm from "../CampaignForm/CampaignForm";
 import { Plus } from "lucide-react";
-import createCampaign from "../../actions/campaign";
+import createCampaign from "../../actions/createCampaign";
 import { CampaignFormType } from "../../schemas/CampaignFormSchema";
 import { useState } from "react";
 import { toast } from "sonner";
