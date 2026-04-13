@@ -8,7 +8,7 @@
     "campaigns": "Campanhas",
     "dashboard": "Dashboard",
     "session_review": "Diário de sessão",
-    "npc_creation": "Criação de NPC",
+    "npc": "NPCs",
     "notes": "Notas",
     "world_building": "Criação de Mundo",
     "view_profile": "Visualizar perfil",
@@ -35,5 +35,16 @@
     "placeholder_description": "Sobre o que é essa campanha?",
     "campaign_created_successfully": "Campanha {name} criada com sucesso",
     "error_creating_campaign": "Erro ao criar campanha"
+  },
+  "npc": {
+    "page_title": "NPCs",
+    "create_npc": "Criar NPC",
+    "npc_created_successfully": "NPC {name} criado com sucesso",
+    "error_creating_npc": "Erro ao criar NPC",
+    "label_name": "Nome do NPC",
+    "placeholder_name": "Digite o nome do NPC",
+    "label_description": "Descrição",
+    "placeholder_description": "Sobre o que é esse NPC?",
+    "placeholder_personality": "Personalidade do NPC"
   }
 }

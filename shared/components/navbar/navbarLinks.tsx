@@ -18,33 +18,34 @@ export type NavbarRoute = {
 const navbarLinks = (
   dict: Dictionary,
   isInCampaign: boolean,
+  campaignId?: number,
 ): NavbarRoute[] => {
   const navbarDict = dict.navbar;
 
-  if (isInCampaign) {
+  if (isInCampaign && campaignId) {
     return [
       {
-        href: "/dashboard",
+        href: `/campaign/${campaignId}/dashboard`,
         label: navbarDict.dashboard,
         icon: LayoutGrid,
       },
       {
-        href: "/session-review",
+        href: `/campaign/${campaignId}/session-review`,
         label: navbarDict.session_review,
         icon: FileText,
       },
       {
-        href: "/npc-creation",
-        label: navbarDict.npc_creation,
+        href: `/campaign/${campaignId}/npc`,
+        label: navbarDict.npc,
         icon: UserRound,
       },
       {
-        href: "/notes",
+        href: `/campaign/${campaignId}/notes`,
         label: navbarDict.notes,
         icon: NotebookText,
       },
       {
-        href: "/world-building",
+        href: `/campaign/${campaignId}/world-building`,
         label: navbarDict.world_building,
         icon: Globe,
       },

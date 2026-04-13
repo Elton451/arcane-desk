@@ -59,6 +59,7 @@ export const ModelName = {
   Session: "Session",
   VerificationToken: "VerificationToken",
   Campaign: "Campaign",
+  NPC: "NPC",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -141,6 +142,17 @@ export const CampaignScalarFieldEnum = {
 
 export type CampaignScalarFieldEnum =
   (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum];
+
+export const NPCScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  description: "description",
+  role: "role",
+  personality: "personality",
+} as const;
+
+export type NPCScalarFieldEnum =
+  (typeof NPCScalarFieldEnum)[keyof typeof NPCScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",

@@ -69,3 +69,11 @@ model Campaign {
 	ownerId String
 	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
+
+model NPC {
+	id Int @id @default(autoincrement())
+	name String 
+	description String
+	role String
+	personality String?
+}

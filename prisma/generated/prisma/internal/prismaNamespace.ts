@@ -417,6 +417,7 @@ export const ModelName = {
   Session: "Session",
   VerificationToken: "VerificationToken",
   Campaign: "Campaign",
+  NPC: "NPC",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -443,7 +444,8 @@ export type TypeMap<
       | "account"
       | "session"
       | "verificationToken"
-      | "campaign";
+      | "campaign"
+      | "nPC";
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
@@ -827,6 +829,82 @@ export type TypeMap<
         };
       };
     };
+    NPC: {
+      payload: Prisma.$NPCPayload<ExtArgs>;
+      fields: Prisma.NPCFieldRefs;
+      operations: {
+        findUnique: {
+          args: Prisma.NPCFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload> | null;
+        };
+        findUniqueOrThrow: {
+          args: Prisma.NPCFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        findFirst: {
+          args: Prisma.NPCFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload> | null;
+        };
+        findFirstOrThrow: {
+          args: Prisma.NPCFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        findMany: {
+          args: Prisma.NPCFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+        };
+        create: {
+          args: Prisma.NPCCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        createMany: {
+          args: Prisma.NPCCreateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        createManyAndReturn: {
+          args: Prisma.NPCCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+        };
+        delete: {
+          args: Prisma.NPCDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        update: {
+          args: Prisma.NPCUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        deleteMany: {
+          args: Prisma.NPCDeleteManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateMany: {
+          args: Prisma.NPCUpdateManyArgs<ExtArgs>;
+          result: BatchPayload;
+        };
+        updateManyAndReturn: {
+          args: Prisma.NPCUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+        };
+        upsert: {
+          args: Prisma.NPCUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+        };
+        aggregate: {
+          args: Prisma.NPCAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNPC>;
+        };
+        groupBy: {
+          args: Prisma.NPCGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.NPCGroupByOutputType>[];
+        };
+        count: {
+          args: Prisma.NPCCountArgs<ExtArgs>;
+          result:
+            | runtime.Types.Utils.Optional<Prisma.NPCCountAggregateOutputType>
+            | number;
+        };
+      };
+    };
   };
 } & {
   other: {
@@ -930,6 +1008,17 @@ export const CampaignScalarFieldEnum = {
 
 export type CampaignScalarFieldEnum =
   (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum];
+
+export const NPCScalarFieldEnum = {
+  id: "id",
+  name: "name",
+  description: "description",
+  role: "role",
+  personality: "personality",
+} as const;
+
+export type NPCScalarFieldEnum =
+  (typeof NPCScalarFieldEnum)[keyof typeof NPCScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",
@@ -1128,6 +1217,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit;
   verificationToken?: Prisma.VerificationTokenOmit;
   campaign?: Prisma.CampaignOmit;
+  nPC?: Prisma.NPCOmit;
 };
 
 /* Types for Logging */

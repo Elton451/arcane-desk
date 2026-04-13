@@ -1,0 +1,62 @@
+"use server";
+
+import { auth0 } from "@/lib/auth0";
+import { prisma } from "@/lib/prisma";
+import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
+
+async function createNPC(campaignId: number, formData: NpcSchemaType) {
+  const session = await auth0.getSession();
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  const dbUser = await prisma.user.findUnique({
+    where: { auth0Id: session.user.sub },
+    select: { id: true },
+  });
+
+  if (!dbUser) {
+    throw new Error("User not found");
+  }
+
+  const validation = NpcSchema.safeParse(formData);
+  if (!validation.success) {
+    return {
+      success: false,
+      message: "NPC Form Validation Failed",
+      error: validation.error,
+    };
+  }
+
+  const campaign = await prisma.campaign.findFirst({
+    where: {
+      id: campaignId,
+      ownerId: dbUser.id,
+    },
+    select: { id: true },
+  });
+
+  if (!campaign) {
+    return {
+      success: false,
+      message: "Campaign not found",
+    };
+  }
+
+  const npc = await prisma.nPC.create({
+    data: {
+      description: formData.description,
+      name: formData.name,
+      role: formData.role,
+      personality: formData.personality,
+    },
+  });
+
+  return {
+    success: true,
+    data: npc,
+  };
+}
+
+export default createNPC;

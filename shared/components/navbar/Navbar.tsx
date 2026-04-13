@@ -82,13 +82,14 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
         )}
 
         <nav className="flex flex-col gap-0.5">
-          {navbarLinks(dict, Boolean(isInCampaign)).map((route) => {
+          {navbarLinks(dict, Boolean(isInCampaign), campaignId).map((route) => {
             const href = `/${lang}${route.href}`;
             const active = isRouteActive(route.href);
             const Icon = route.icon;
             return (
               <Link
                 key={route.href}
+                replace={false}
                 href={href}
                 className={cn(
                   "font-lato flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors duration-150",
