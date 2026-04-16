@@ -417,7 +417,7 @@ export const ModelName = {
   Session: "Session",
   VerificationToken: "VerificationToken",
   Campaign: "Campaign",
-  NPC: "NPC",
+  Npc: "Npc",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -445,7 +445,7 @@ export type TypeMap<
       | "session"
       | "verificationToken"
       | "campaign"
-      | "nPC";
+      | "npc";
     txIsolationLevel: TransactionIsolationLevel;
   };
   model: {
@@ -829,78 +829,78 @@ export type TypeMap<
         };
       };
     };
-    NPC: {
-      payload: Prisma.$NPCPayload<ExtArgs>;
-      fields: Prisma.NPCFieldRefs;
+    Npc: {
+      payload: Prisma.$NpcPayload<ExtArgs>;
+      fields: Prisma.NpcFieldRefs;
       operations: {
         findUnique: {
-          args: Prisma.NPCFindUniqueArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload> | null;
+          args: Prisma.NpcFindUniqueArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload> | null;
         };
         findUniqueOrThrow: {
-          args: Prisma.NPCFindUniqueOrThrowArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcFindUniqueOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         findFirst: {
-          args: Prisma.NPCFindFirstArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload> | null;
+          args: Prisma.NpcFindFirstArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload> | null;
         };
         findFirstOrThrow: {
-          args: Prisma.NPCFindFirstOrThrowArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcFindFirstOrThrowArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         findMany: {
-          args: Prisma.NPCFindManyArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+          args: Prisma.NpcFindManyArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>[];
         };
         create: {
-          args: Prisma.NPCCreateArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcCreateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         createMany: {
-          args: Prisma.NPCCreateManyArgs<ExtArgs>;
+          args: Prisma.NpcCreateManyArgs<ExtArgs>;
           result: BatchPayload;
         };
         createManyAndReturn: {
-          args: Prisma.NPCCreateManyAndReturnArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+          args: Prisma.NpcCreateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>[];
         };
         delete: {
-          args: Prisma.NPCDeleteArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcDeleteArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         update: {
-          args: Prisma.NPCUpdateArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcUpdateArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         deleteMany: {
-          args: Prisma.NPCDeleteManyArgs<ExtArgs>;
+          args: Prisma.NpcDeleteManyArgs<ExtArgs>;
           result: BatchPayload;
         };
         updateMany: {
-          args: Prisma.NPCUpdateManyArgs<ExtArgs>;
+          args: Prisma.NpcUpdateManyArgs<ExtArgs>;
           result: BatchPayload;
         };
         updateManyAndReturn: {
-          args: Prisma.NPCUpdateManyAndReturnArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>[];
+          args: Prisma.NpcUpdateManyAndReturnArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>[];
         };
         upsert: {
-          args: Prisma.NPCUpsertArgs<ExtArgs>;
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NPCPayload>;
+          args: Prisma.NpcUpsertArgs<ExtArgs>;
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NpcPayload>;
         };
         aggregate: {
-          args: Prisma.NPCAggregateArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.AggregateNPC>;
+          args: Prisma.NpcAggregateArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNpc>;
         };
         groupBy: {
-          args: Prisma.NPCGroupByArgs<ExtArgs>;
-          result: runtime.Types.Utils.Optional<Prisma.NPCGroupByOutputType>[];
+          args: Prisma.NpcGroupByArgs<ExtArgs>;
+          result: runtime.Types.Utils.Optional<Prisma.NpcGroupByOutputType>[];
         };
         count: {
-          args: Prisma.NPCCountArgs<ExtArgs>;
+          args: Prisma.NpcCountArgs<ExtArgs>;
           result:
-            | runtime.Types.Utils.Optional<Prisma.NPCCountAggregateOutputType>
+            | runtime.Types.Utils.Optional<Prisma.NpcCountAggregateOutputType>
             | number;
         };
       };
@@ -1009,16 +1009,17 @@ export const CampaignScalarFieldEnum = {
 export type CampaignScalarFieldEnum =
   (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum];
 
-export const NPCScalarFieldEnum = {
+export const NpcScalarFieldEnum = {
   id: "id",
   name: "name",
   description: "description",
   role: "role",
   personality: "personality",
+  campaignId: "campaignId",
 } as const;
 
-export type NPCScalarFieldEnum =
-  (typeof NPCScalarFieldEnum)[keyof typeof NPCScalarFieldEnum];
+export type NpcScalarFieldEnum =
+  (typeof NpcScalarFieldEnum)[keyof typeof NpcScalarFieldEnum];
 
 export const SortOrder = {
   asc: "asc",
@@ -1217,7 +1218,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit;
   verificationToken?: Prisma.VerificationTokenOmit;
   campaign?: Prisma.CampaignOmit;
-  nPC?: Prisma.NPCOmit;
+  npc?: Prisma.NpcOmit;
 };
 
 /* Types for Logging */

@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import createNPC from "../actions/createNPC";
+import createNPC from "../../actions/createNPC";
 import NPCForm from "./NPCForm";
-import { NpcSchemaType } from "../schemas/NpcSchema";
+import { NpcSchemaType } from "../../schemas/NpcSchema";
 import { Dictionary } from "@/shared/types/i18n";
 import { t } from "@/shared/i18n/interpolate";
 

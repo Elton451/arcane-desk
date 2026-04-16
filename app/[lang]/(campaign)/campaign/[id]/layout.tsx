@@ -14,6 +14,7 @@ const CampaignLayout = async ({
   children: React.ReactNode;
 }) => {
   const { lang, id } = await params;
+
   const dict = await getDictionary(lang);
   const session = await auth0.getSession();
 

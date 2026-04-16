@@ -12,5 +12,5 @@ export type * from "./models/Account";
 export type * from "./models/Session";
 export type * from "./models/VerificationToken";
 export type * from "./models/Campaign";
-export type * from "./models/NPC";
+export type * from "./models/Npc";
 export type * from "./commonInputTypes";

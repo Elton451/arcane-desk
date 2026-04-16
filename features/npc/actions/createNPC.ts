@@ -44,12 +44,17 @@ async function createNPC(campaignId: number, formData: NpcSchemaType) {
     };
   }
 
-  const npc = await prisma.nPC.create({
+  const npc = await prisma.npc.create({
     data: {
       description: formData.description,
       name: formData.name,
       role: formData.role,
       personality: formData.personality,
+      campaign: {
+        connect: {
+          id: campaign.id,
+        },
+      },
     },
   });
 

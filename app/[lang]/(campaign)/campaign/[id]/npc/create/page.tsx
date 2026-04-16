@@ -1,4 +1,4 @@
-import NPCCreateForm from "@/features/npc/components/NPCCreateForm";
+import NPCCreateForm from "@/features/npc/components/form/NPCCreateForm";
 import { getDictionary } from "@/shared/i18n/dictionaries";
 import { Lang } from "@/shared/types/i18n";
 

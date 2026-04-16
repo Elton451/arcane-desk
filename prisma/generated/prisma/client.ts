@@ -72,7 +72,7 @@ export type VerificationToken = Prisma.VerificationTokenModel;
  */
 export type Campaign = Prisma.CampaignModel;
 /**
- * Model NPC
+ * Model Npc
  *
  */
-export type NPC = Prisma.NPCModel;
+export type Npc = Prisma.NpcModel;

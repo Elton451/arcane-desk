@@ -229,6 +229,7 @@ export type CampaignWhereInput = {
   system?: Prisma.StringNullableFilter<"Campaign"> | string | null;
   ownerId?: Prisma.StringFilter<"Campaign"> | string;
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+  npcs?: Prisma.NpcListRelationFilter;
 };
 
 export type CampaignOrderByWithRelationInput = {
@@ -239,6 +240,7 @@ export type CampaignOrderByWithRelationInput = {
   system?: Prisma.SortOrderInput | Prisma.SortOrder;
   ownerId?: Prisma.SortOrder;
   owner?: Prisma.UserOrderByWithRelationInput;
+  npcs?: Prisma.NpcOrderByRelationAggregateInput;
 };
 
 export type CampaignWhereUniqueInput = Prisma.AtLeast<
@@ -253,6 +255,7 @@ export type CampaignWhereUniqueInput = Prisma.AtLeast<
     system?: Prisma.StringNullableFilter<"Campaign"> | string | null;
     ownerId?: Prisma.StringFilter<"Campaign"> | string;
     owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    npcs?: Prisma.NpcListRelationFilter;
   },
   "id"
 >;
@@ -299,6 +302,7 @@ export type CampaignCreateInput = {
   createdAt?: Date | string;
   system?: string | null;
   owner: Prisma.UserCreateNestedOneWithoutCampaignsInput;
+  npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput;
 };
 
 export type CampaignUncheckedCreateInput = {
@@ -308,6 +312,7 @@ export type CampaignUncheckedCreateInput = {
   createdAt?: Date | string;
   system?: string | null;
   ownerId: string;
+  npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput;
 };
 
 export type CampaignUpdateInput = {
@@ -316,6 +321,7 @@ export type CampaignUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput;
+  npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput;
 };
 
 export type CampaignUncheckedUpdateInput = {
@@ -325,6 +331,7 @@ export type CampaignUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+  npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput;
 };
 
 export type CampaignCreateManyInput = {
@@ -395,6 +402,11 @@ export type CampaignMinOrderByAggregateInput = {
 
 export type CampaignSumOrderByAggregateInput = {
   id?: Prisma.SortOrder;
+};
+
+export type CampaignScalarRelationFilter = {
+  is?: Prisma.CampaignWhereInput;
+  isNot?: Prisma.CampaignWhereInput;
 };
 
 export type CampaignCreateNestedManyWithoutOwnerInput = {
@@ -499,11 +511,38 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number;
 };
 
+export type CampaignCreateNestedOneWithoutNpcsInput = {
+  create?: Prisma.XOR<
+    Prisma.CampaignCreateWithoutNpcsInput,
+    Prisma.CampaignUncheckedCreateWithoutNpcsInput
+  >;
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutNpcsInput;
+  connect?: Prisma.CampaignWhereUniqueInput;
+};
+
+export type CampaignUpdateOneRequiredWithoutNpcsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.CampaignCreateWithoutNpcsInput,
+    Prisma.CampaignUncheckedCreateWithoutNpcsInput
+  >;
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutNpcsInput;
+  upsert?: Prisma.CampaignUpsertWithoutNpcsInput;
+  connect?: Prisma.CampaignWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.CampaignUpdateToOneWithWhereWithoutNpcsInput,
+      Prisma.CampaignUpdateWithoutNpcsInput
+    >,
+    Prisma.CampaignUncheckedUpdateWithoutNpcsInput
+  >;
+};
+
 export type CampaignCreateWithoutOwnerInput = {
   name: string;
   description?: string | null;
   createdAt?: Date | string;
   system?: string | null;
+  npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput;
 };
 
 export type CampaignUncheckedCreateWithoutOwnerInput = {
@@ -512,6 +551,7 @@ export type CampaignUncheckedCreateWithoutOwnerInput = {
   description?: string | null;
   createdAt?: Date | string;
   system?: string | null;
+  npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput;
 };
 
 export type CampaignCreateOrConnectWithoutOwnerInput = {
@@ -569,6 +609,68 @@ export type CampaignScalarWhereInput = {
   ownerId?: Prisma.StringFilter<"Campaign"> | string;
 };
 
+export type CampaignCreateWithoutNpcsInput = {
+  name: string;
+  description?: string | null;
+  createdAt?: Date | string;
+  system?: string | null;
+  owner: Prisma.UserCreateNestedOneWithoutCampaignsInput;
+};
+
+export type CampaignUncheckedCreateWithoutNpcsInput = {
+  id?: number;
+  name: string;
+  description?: string | null;
+  createdAt?: Date | string;
+  system?: string | null;
+  ownerId: string;
+};
+
+export type CampaignCreateOrConnectWithoutNpcsInput = {
+  where: Prisma.CampaignWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.CampaignCreateWithoutNpcsInput,
+    Prisma.CampaignUncheckedCreateWithoutNpcsInput
+  >;
+};
+
+export type CampaignUpsertWithoutNpcsInput = {
+  update: Prisma.XOR<
+    Prisma.CampaignUpdateWithoutNpcsInput,
+    Prisma.CampaignUncheckedUpdateWithoutNpcsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.CampaignCreateWithoutNpcsInput,
+    Prisma.CampaignUncheckedCreateWithoutNpcsInput
+  >;
+  where?: Prisma.CampaignWhereInput;
+};
+
+export type CampaignUpdateToOneWithWhereWithoutNpcsInput = {
+  where?: Prisma.CampaignWhereInput;
+  data: Prisma.XOR<
+    Prisma.CampaignUpdateWithoutNpcsInput,
+    Prisma.CampaignUncheckedUpdateWithoutNpcsInput
+  >;
+};
+
+export type CampaignUpdateWithoutNpcsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput;
+};
+
+export type CampaignUncheckedUpdateWithoutNpcsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number;
+  name?: Prisma.StringFieldUpdateOperationsInput | string;
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string;
+};
+
 export type CampaignCreateManyOwnerInput = {
   id?: number;
   name: string;
@@ -582,6 +684,7 @@ export type CampaignUpdateWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput;
 };
 
 export type CampaignUncheckedUpdateWithoutOwnerInput = {
@@ -590,6 +693,7 @@ export type CampaignUncheckedUpdateWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput;
 };
 
 export type CampaignUncheckedUpdateManyWithoutOwnerInput = {
@@ -598,6 +702,44 @@ export type CampaignUncheckedUpdateManyWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+};
+
+/**
+ * Count Type CampaignCountOutputType
+ */
+
+export type CampaignCountOutputType = {
+  npcs: number;
+};
+
+export type CampaignCountOutputTypeSelect<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  npcs?: boolean | CampaignCountOutputTypeCountNpcsArgs;
+};
+
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeDefaultArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the CampaignCountOutputType
+   */
+  select?: Prisma.CampaignCountOutputTypeSelect<ExtArgs> | null;
+};
+
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountNpcsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.NpcWhereInput;
 };
 
 export type CampaignSelect<
@@ -612,6 +754,8 @@ export type CampaignSelect<
     system?: boolean;
     ownerId?: boolean;
     owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    npcs?: boolean | Prisma.Campaign$npcsArgs<ExtArgs>;
+    _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs["result"]["campaign"]
 >;
@@ -669,6 +813,8 @@ export type CampaignInclude<
     runtime.Types.Extensions.DefaultArgs,
 > = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+  npcs?: boolean | Prisma.Campaign$npcsArgs<ExtArgs>;
+  _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type CampaignIncludeCreateManyAndReturn<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
@@ -690,6 +836,7 @@ export type $CampaignPayload<
   name: "Campaign";
   objects: {
     owner: Prisma.$UserPayload<ExtArgs>;
+    npcs: Prisma.$NpcPayload<ExtArgs>[];
   };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
@@ -1263,6 +1410,17 @@ export interface Prisma__CampaignClient<
     ExtArgs,
     GlobalOmitOptions
   >;
+  npcs<T extends Prisma.Campaign$npcsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.Campaign$npcsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$NpcPayload<ExtArgs>,
+        T,
+        "findMany",
+        GlobalOmitOptions
+      >
+    | Null
+  >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1774,6 +1932,35 @@ export type CampaignDeleteManyArgs<
    * Limit how many Campaigns to delete.
    */
   limit?: number;
+};
+
+/**
+ * Campaign.npcs
+ */
+export type Campaign$npcsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Npc
+   */
+  select?: Prisma.NpcSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Npc
+   */
+  omit?: Prisma.NpcOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NpcInclude<ExtArgs> | null;
+  where?: Prisma.NpcWhereInput;
+  orderBy?:
+    | Prisma.NpcOrderByWithRelationInput
+    | Prisma.NpcOrderByWithRelationInput[];
+  cursor?: Prisma.NpcWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.NpcScalarFieldEnum | Prisma.NpcScalarFieldEnum[];
 };
 
 /**

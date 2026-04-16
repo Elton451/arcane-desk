@@ -68,12 +68,15 @@ model Campaign {
 	system String?
 	ownerId String
 	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+	npcs Npc[]
 }
 
-model NPC {
+model Npc {
 	id Int @id @default(autoincrement())
 	name String 
 	description String
 	role String
 	personality String?
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
 }

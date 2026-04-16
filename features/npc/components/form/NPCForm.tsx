@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
+import { NpcSchema, NpcSchemaType } from "../../schemas/NpcSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Field,
@@ -11,7 +11,7 @@ import {
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Dictionary } from "@/shared/types/i18n";
-import { INpc } from "../types/INpc";
+import { INpc } from "../../types/INpc";
 import { Button } from "@/shared/components/ui/button";
 
 interface NPCFormProps {
