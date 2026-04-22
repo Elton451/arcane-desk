@@ -1,5 +1,5 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { NpcSchema, NpcSchemaType } from "../../schemas/NpcSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -13,6 +13,7 @@ import { Textarea } from "@/shared/components/ui/textarea";
 import { Dictionary } from "@/shared/types/i18n";
 import { INpc } from "../../types/INpc";
 import { Button } from "@/shared/components/ui/button";
+import { TextEditor } from "@/shared/components/textEditor/Tiptap";
 
 interface NPCFormProps {
   dict: Dictionary;
@@ -23,6 +24,7 @@ interface NPCFormProps {
 const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
   const {
     register,
+    control,
     handleSubmit: formSubmit,
     formState: { errors },
   } = useForm<NpcSchemaType>({
@@ -31,7 +33,7 @@ const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
       ? {
           name: npc.name,
           description: npc.description,
-          personality: npc.personality,
+          personality: npc.personality || undefined,
           role: npc.role,
         }
       : {},
@@ -69,11 +71,14 @@ const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
           <FieldLabel htmlFor="input-field-description">
             {dict.npc.label_description}
           </FieldLabel>
-          <Textarea
-            id="input-field-description"
-            placeholder={dict.npc.placeholder_description}
-            {...register("description")}
+          <Controller
+            control={control}
+            name="description"
+            render={({ field }) => (
+              <TextEditor value={field.value} onChange={field.onChange} />
+            )}
           />
+
           <FieldError errors={[errors.description]} />
         </Field>
         <Field>
@@ -87,7 +92,7 @@ const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
       </FieldSet>
       <div className="w-full">
         <Button className="w-full" type="submit">
-          {dict.npc.create_npc}
+          {npc ? dict.npc.edit_npc : dict.npc.create_npc}
         </Button>
       </div>
     </form>

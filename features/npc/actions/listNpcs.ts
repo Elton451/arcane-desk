@@ -3,10 +3,7 @@ import { auth0 } from "@/lib/auth0";
 import { INpc } from "../types/INpc";
 import { prisma } from "@/lib/prisma";
 
-const listNpcs = async (
-  campaignId: number,
-  search?: string,
-): Promise<INpc[]> => {
+const listNpcs = async (campaignId: number): Promise<INpc[]> => {
   const session = await auth0.getSession();
 
   if (!session || !session.user || !session.user.email) {

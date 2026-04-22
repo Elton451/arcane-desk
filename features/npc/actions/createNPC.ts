@@ -1,24 +1,11 @@
 "use server";
 
-import { auth0 } from "@/lib/auth0";
 import { prisma } from "@/lib/prisma";
 import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
+import getUser from "@/features/auth/getUser";
 
 async function createNPC(campaignId: number, formData: NpcSchemaType) {
-  const session = await auth0.getSession();
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
-
-  const dbUser = await prisma.user.findUnique({
-    where: { auth0Id: session.user.sub },
-    select: { id: true },
-  });
-
-  if (!dbUser) {
-    throw new Error("User not found");
-  }
+  const user = await getUser();
 
   const validation = NpcSchema.safeParse(formData);
   if (!validation.success) {
@@ -32,7 +19,7 @@ async function createNPC(campaignId: number, formData: NpcSchemaType) {
   const campaign = await prisma.campaign.findFirst({
     where: {
       id: campaignId,
-      ownerId: dbUser.id,
+      ownerId: user.id,
     },
     select: { id: true },
   });

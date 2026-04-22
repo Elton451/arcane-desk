@@ -1,7 +1,8 @@
 {
   "common": {
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "edit": "Edit"
   },
   "navbar": {
     "subtitle": "Campaign Manager",
@@ -38,12 +39,20 @@
   "npc": {
     "page_title": "NPCs",
     "create_npc": "Create NPC",
+    "edit_npc": "Edit NPC",
     "npc_created_successfully": "NPC {name} created successfully",
     "error_creating_npc": "Error creating NPC",
     "label_name": "Name",
     "placeholder_name": "Enter NPC name",
     "label_description": "Description",
     "placeholder_description": "Sobre o que é esse NPC?",
-    "placeholder_personality": "Npc personality"
+    "placeholder_personality": "Npc personality",
+    "personality": "Personality",
+    "race": "Race",
+    "role": "Role",
+    "back_to_npcs": "Back to NPCs",
+    "hide_description": "Hide description",
+    "show_description": "Show description",
+    "updated_successfully": "NPC updated succesfully"
   }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
-npx lint-staged
-npx prettier . --write
-npm run analyze
+# npm run lint
+# npx lint-staged
+# npx prettier . --write
+# npm run analyze

@@ -15,7 +15,7 @@ const NpcList = ({ campaignId }: NpcListProps) => {
     listNpcs(campaignId).then((npcs) => {
       setNpcs(npcs);
     });
-  }, [setNpcs]);
+  }, [setNpcs, listNpcs]);
 
   return (
     <div className="mt-8 flex w-full flex-col items-center gap-8">
