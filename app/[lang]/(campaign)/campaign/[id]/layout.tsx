@@ -1,6 +1,5 @@
 import { auth0 } from "@/lib/auth0";
 import { prisma } from "@/lib/prisma";
-import { ICampaign } from "@/shared/api/models/ICampaign";
 import { IUserDTO } from "@/shared/api/models/IUser";
 import Navbar from "@/shared/components/navbar/Navbar";
 import { getDictionary } from "@/shared/i18n/dictionaries";

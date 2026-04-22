@@ -13,6 +13,7 @@ import { Textarea } from "@/shared/components/ui/textarea";
 import { Dictionary } from "@/shared/types/i18n";
 import { INpc } from "../../types/INpc";
 import { Button } from "@/shared/components/ui/button";
+import { TextEditor } from "@/shared/components/textEditor/Tiptap";
 
 interface NPCFormProps {
   dict: Dictionary;
@@ -74,6 +75,8 @@ const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
             placeholder={dict.npc.placeholder_description}
             {...register("description")}
           />
+
+          <TextEditor defaultText={dict.npc.placeholder_description} />
           <FieldError errors={[errors.description]} />
         </Field>
         <Field>

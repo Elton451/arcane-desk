@@ -1,7 +1,8 @@
 {
   "common": {
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "edit": "Edit"
   },
   "navbar": {
     "subtitle": "Campaign Manager",
@@ -44,6 +45,12 @@
     "placeholder_name": "Enter NPC name",
     "label_description": "Description",
     "placeholder_description": "Sobre o que é esse NPC?",
-    "placeholder_personality": "Npc personality"
+    "placeholder_personality": "Npc personality",
+    "personality": "Personality",
+    "race": "Race",
+    "role": "Role",
+    "back_to_npcs": "Back to NPCs",
+    "hide_description": "Hide description",
+    "show_description": "Show description"
   }
 }

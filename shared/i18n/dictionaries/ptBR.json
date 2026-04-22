@@ -1,7 +1,9 @@
 {
   "common": {
     "previous": "Anterior",
-    "next": "Próximo"
+    "next": "Próximo",
+    "delete": "Deletar",
+    "edit": "Editar"
   },
   "navbar": {
     "subtitle": "Gerenciador de campanhas",
@@ -45,6 +47,13 @@
     "placeholder_name": "Digite o nome do NPC",
     "label_description": "Descrição",
     "placeholder_description": "Sobre o que é esse NPC?",
-    "placeholder_personality": "Personalidade do NPC"
+    "placeholder_personality": "Personalidade do NPC",
+    "personality": "Personalidade",
+    "race": "Raça",
+    "role": "Função",
+    "back_to_npcs": "Voltar aos NPCs",
+    "description": "Descrição",
+    "hide_description": "Esconder descrição",
+    "show_description": "Mostrar descrição"
   }
 }

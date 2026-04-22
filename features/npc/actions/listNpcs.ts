@@ -5,7 +5,6 @@ import { prisma } from "@/lib/prisma";
 
 const listNpcs = async (
   campaignId: number,
-  search?: string,
 ): Promise<INpc[]> => {
   const session = await auth0.getSession();
 
