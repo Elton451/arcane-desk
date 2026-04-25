@@ -15,6 +15,18 @@ module.exports = {
       },
     },
     {
+      name: "cross-feature-import",
+      severity: "error",
+      comment:
+        "This dependency is from another feature, either remove it and add to the new feature" +
+        "Or make the feature/function/hook a shared file",
+      from: { path: "^features/([^/]+)/" },
+      to: {
+        path: "^features/([^/]+)/",
+        pathNot: "^features/$1/",
+      },
+    },
+    {
       name: "no-orphans",
       comment:
         "This is an orphan module - it's likely not used (anymore?). Either use it or " +

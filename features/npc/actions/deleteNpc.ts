@@ -1,30 +1,30 @@
-"use server"
+"use server";
 
-import getUser from "@/features/auth/getUser"
-import { prisma } from "@/lib/prisma"
+import { prisma } from "@/lib/prisma";
+import getUser from "@/shared/api/services/getUser";
 
 const deleteNpc = async (npcId: number) => {
-	const user = await getUser();
+  const user = await getUser();
 
-	if(!user) return;
+  if (!user) return;
 
-	const npc = await prisma.npc.delete({
-		where: {
-			id: npcId
-		}
-	})
+  const npc = await prisma.npc.delete({
+    where: {
+      id: npcId,
+    },
+  });
 
-	if(!npc) {
-		return {
-			success: false,
-			message: "npc_not_found"
-		}
-	}
+  if (!npc) {
+    return {
+      success: false,
+      message: "npc_not_found",
+    };
+  }
 
-	return {
-		success: true,
-		data: npc
-	}
-}
+  return {
+    success: true,
+    data: npc,
+  };
+};
 
 export default deleteNpc;

@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
-import getUser from "@/features/auth/getUser";
+import getUser from "@/shared/api/services/getUser";
 
 async function createNPC(campaignId: number, formData: NpcSchemaType) {
   const user = await getUser();

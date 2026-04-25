@@ -8,6 +8,7 @@ import {
   AvatarImage,
 } from "@/shared/components/ui/avatar";
 import { IUserDTO } from "@/shared/api/models/IUser";
+import getInitials from "@/shared/utils/getInitials.utils";
 
 interface UserAvatarProps {
   dict: Dictionary;
@@ -19,14 +20,7 @@ const UserAvatar = ({ dict, user }: UserAvatarProps) => {
     return;
   }
 
-  const initials =
-    user.name &&
-    user.name
-      .split(" ")
-      .map((word) => word[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase();
+  const initials = getInitials(user.name || "");
 
   const profileLabel = [user.name, dict.navbar.view_profile]
     .filter(Boolean)

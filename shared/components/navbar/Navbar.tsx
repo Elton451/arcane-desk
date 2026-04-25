@@ -30,8 +30,6 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
   const lang =
     typeof params.lang === "string" ? params.lang : (params.lang?.[0] ?? "en");
 
-  console.log("ID campanha", campaignId);
-
   const pathForMatch =
     pathname.replace(new RegExp(`^/${lang}(?=/|$)`), "") || "/";
   const isRouteActive = (href: string) =>
