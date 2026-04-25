@@ -48,8 +48,8 @@ const CampaignLayout = async ({
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex-1">
+    <div className="flex min-h-screen w-full flex-col">
+      <main className="flex-1 w-full">
         <Navbar
           dict={dict}
           campaignName={campaignName || ""}
