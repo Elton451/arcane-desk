@@ -43,7 +43,7 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`h-full antialiased ${lato.variable} ${spectral.variable}`}
-      data-theme="catppuccin"
+      data-theme="nord"
     >
       <body className="flex min-h-full flex-col">
         <SidebarProvider>

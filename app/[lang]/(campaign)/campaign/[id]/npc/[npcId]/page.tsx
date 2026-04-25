@@ -5,6 +5,8 @@ import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import NpcDescription from "@/features/npc/components/NpcDescription/NpcDescription";
+import getInitials from "@/shared/utils/getInitials.utils";
+import NpcDelete from "@/features/npc/components/form/NPCDelete";
 
 interface NpcDetailPageProps {
   params: Promise<Params>;
@@ -13,7 +15,7 @@ interface NpcDetailPageProps {
 const NPCPage = async ({ params }: NpcDetailPageProps) => {
   const { lang, npcId, id: campaignId } = await params;
   const dict = await getDictionary(lang);
-  const result = await getNpc(Number(npcId));
+  let result = await getNpc(Number(npcId));
 
   if (!result.success || !result.data) {
     notFound();
@@ -21,17 +23,12 @@ const NPCPage = async ({ params }: NpcDetailPageProps) => {
 
   const npc = result.data;
 
-  const initials = npc.name
-    .split(" ")
-    .slice(0, 2)
-    .map((w: string) => w[0])
-    .join("")
-    .toUpperCase();
+  const initials = getInitials(npc.name);
 
   return (
     <div className="mx-auto max-w-3xl p-6">
       <Link
-        href={`/${lang}/npcs`}
+        href={`/${lang}/campaign/${campaignId}/npc`}
         className="text-muted-foreground hover:text-foreground mb-6 inline-flex items-center gap-1.5 text-sm transition-colors"
       >
         <ChevronLeftIcon className="size-4" />
@@ -46,13 +43,6 @@ const NPCPage = async ({ params }: NpcDetailPageProps) => {
           <div>
             <h1 className="text-2xl font-medium">{npc.name}</h1>
             <p className="text-muted-foreground text-sm">{npc.role}</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {/* npc.race && (
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {npc.race}
-                </span>
-              ) */}
-            </div>
           </div>
         </div>
 
@@ -63,14 +53,10 @@ const NPCPage = async ({ params }: NpcDetailPageProps) => {
           >
             {dict.common.edit}
           </Link>
-          {/* TODO: wire up delete action */}
-          <button className="border-destructive/40 text-destructive hover:bg-destructive/10 rounded-md border px-3 py-1.5 text-sm transition-colors">
-            {dict.common.delete}
-          </button>
+					<NpcDelete dict={dict} npcId={Number(npcId)} redirectUrl={`/${lang}/campaign/${campaignId}/npc`} />
         </div>
       </div>
 
-      {/* Description */}
       {npc.description && (
         <NpcDescription
           description={npc.description}
@@ -79,7 +65,6 @@ const NPCPage = async ({ params }: NpcDetailPageProps) => {
         />
       )}
 
-      {/* Stats grid */}
       <div className="mb-4 grid grid-cols-3 gap-4">
         {[
           { label: dict.npc.race, value: "RAÇA" },

@@ -2,7 +2,8 @@
   "common": {
     "previous": "Previous",
     "next": "Next",
-    "edit": "Edit"
+    "edit": "Edit",
+		"delete": "Delete"
   },
   "navbar": {
     "subtitle": "Campaign Manager",
@@ -53,6 +54,7 @@
     "back_to_npcs": "Back to NPCs",
     "hide_description": "Hide description",
     "show_description": "Show description",
-    "updated_successfully": "NPC updated succesfully"
+    "updated_successfully": "NPC updated succesfully",
+		"deleted_successfully": "NPC deleted succesfully"
   }
 }

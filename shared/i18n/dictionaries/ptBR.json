@@ -56,6 +56,7 @@
     "description": "Descrição",
     "hide_description": "Esconder descrição",
     "show_description": "Mostrar descrição",
-    "updated_successfully": "NPC editado com sucesso"
+    "updated_successfully": "NPC editado com sucesso",
+		"deleted_successfully": "NPC deletado com sucesso"
   }
 }
