@@ -13,18 +13,18 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/shared/components/ui/button";
 import { CampaignSession } from "@/prisma/generated/prisma/browser";
 import { Dictionary } from "@/shared/types/i18n";
+import Link from "next/link";
 
 type SessionCardProps = {
   session: CampaignSession;
   dict: Dictionary;
+  detailsHref?: string;
   onDeleteAction?: (id: number) => void;
   onEditAction?: (id: number) => void;
 };
 
 type SectionProps = {
-  emoji: string;
   label: string;
-  color?: string;
   content: string;
 };
 
@@ -39,6 +39,7 @@ function Section({ label, content }: SectionProps) {
 
 export function SessionCard({
   session,
+  detailsHref,
   onDeleteAction,
   onEditAction,
   dict,
@@ -64,9 +65,18 @@ export function SessionCard({
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-primary truncate text-base font-semibold">
-                {session.title}
-              </h3>
+              {detailsHref ? (
+                <Link
+                  href={detailsHref}
+                  className="text-primary truncate text-base font-semibold hover:underline"
+                >
+                  {session.title}
+                </Link>
+              ) : (
+                <h3 className="text-primary truncate text-base font-semibold">
+                  {session.title}
+                </h3>
+              )}
             </div>
 
             {/* Meta row */}
@@ -119,34 +129,24 @@ export function SessionCard({
               <div className="border-border/50 mt-4 space-y-3.5 border-t pt-4">
                 {session.sessionSummary && (
                   <Section
-                    emoji=""
                     label={dict.session.summary}
                     content={session.sessionSummary}
                   />
                 )}
                 {session.highlights && (
                   <Section
-                    emoji=""
                     label={dict.session.highlights}
-                    color="text-accent"
                     content={session.highlights}
                   />
                 )}
                 {session.improvements && (
                   <Section
-                    emoji=""
                     label={dict.session.challenges}
-                    color="text-yellow-400"
                     content={session.improvements}
                   />
                 )}
                 {session.notes && (
-                  <Section
-                    emoji=""
-                    label={dict.session.notes}
-                    color="text-primary"
-                    content={session.notes}
-                  />
+                  <Section label={dict.session.notes} content={session.notes} />
                 )}
               </div>
             )}

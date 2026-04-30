@@ -2,7 +2,7 @@
 
 import { Plus } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
-import { Dictionary } from "@/shared/types/i18n";
+import { Dictionary, Lang } from "@/shared/types/i18n";
 import { CampaignSession } from "@/prisma/generated/prisma/browser";
 import { SessionCard } from "../sessionCard/SessionCard";
 import { LoadingSection } from "@/shared/components/loading/Loading";
@@ -10,6 +10,8 @@ import { LoadingSection } from "@/shared/components/loading/Loading";
 type SessionListProps = {
   sessions: CampaignSession[];
   dict: Dictionary;
+  lang?: Lang;
+  campaignId?: number;
   campaignTitle?: string;
   isLoading?: boolean;
   onAddSessionAction?: () => void;
@@ -20,6 +22,8 @@ type SessionListProps = {
 export function SessionList({
   sessions,
   dict,
+  lang,
+  campaignId,
   campaignTitle,
   isLoading = false,
   onAddSessionAction,
@@ -60,6 +64,11 @@ export function SessionList({
               key={session.id}
               session={session}
               dict={dict}
+              detailsHref={
+                lang && campaignId
+                  ? `/${lang}/campaign/${campaignId}/session/${session.id}`
+                  : undefined
+              }
               onDeleteAction={onDeleteSessionAction}
               onEditAction={onEditSessionAction}
             />

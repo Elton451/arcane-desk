@@ -19,13 +19,18 @@ const SessionPage = async ({ params }: SessionPageProps) => {
       <div className="mt-5 w-full text-center">
         <h2 className="mb-5 text-2xl font-bold">{dict.session.page_title}</h2>
         <Button asChild className="w-50">
-          <Link href={`/campaign/${id}/session/create`}>
+          <Link href={`/${lang}/campaign/${id}/session/create`}>
             {dict.session.create_session}
           </Link>
         </Button>
       </div>
       <div className="px-10">
-        <SessionList sessions={sessions} dict={dict} />
+        <SessionList
+          sessions={sessions}
+          dict={dict}
+          lang={lang}
+          campaignId={Number(id)}
+        />
       </div>
     </>
   );
