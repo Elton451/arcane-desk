@@ -69,6 +69,7 @@ model Campaign {
 	ownerId String
 	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 	npcs Npc[]
+	sessions CampaignSession[]
 }
 
 model Npc {
@@ -79,4 +80,17 @@ model Npc {
 	personality String?
 	campaignId Int
 	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignSession {
+		id Int @id @default(autoincrement())
+		title String
+		date DateTime
+		numberOfPlayers Int
+		sessionSummary String
+		highlights String?
+		improvements String?
+		notes String?
+		campaignId Int
+		campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
 }

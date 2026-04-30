@@ -30,7 +30,7 @@ const navbarLinks = (
         icon: LayoutGrid,
       },
       {
-        href: `/campaign/${campaignId}/session-review`,
+        href: `/campaign/${campaignId}/session`,
         label: navbarDict.session_review,
         icon: FileText,
       },

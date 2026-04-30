@@ -56,5 +56,18 @@
     "show_description": "Show description",
     "updated_successfully": "NPC updated succesfully",
 		"deleted_successfully": "NPC deleted succesfully"
-  }
+  },
+	"session": {
+		"page_title": "Session Diaries",
+		"create_session": "Add Session",
+		"sessions": "Sessions",
+		"notes": "Notes",
+		"challenges": "Challenges",
+		"highlights": "Highlights",
+		"summary": "Summary",
+		"hide_details": "Esconder detalhes",
+		"show_details": "Mostrar detalhes",
+		"player": "Player",
+		"players": "Players"
+	}
 }
