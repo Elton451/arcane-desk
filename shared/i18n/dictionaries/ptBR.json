@@ -190,5 +190,27 @@
       "card_era": "Era: {value}",
       "card_source": "Fonte: {value}"
     }
+  },
+  "profile": {
+    "page_title": "Configurações do Perfil",
+    "display_name": "Nome de exibição",
+    "username": "Nome de usuário",
+    "email": "E-mail",
+    "edit_profile": "Editar perfil",
+    "theme_selection": "Seleção de tema",
+    "account_statistics": "Estatísticas da conta",
+    "stat_active_campaigns": "Campanhas ativas",
+    "stat_total_sessions": "Sessões totais",
+    "stat_npcs_created": "NPCs criados",
+    "themes": {
+      "nord": "Nord",
+      "dracula": "Dracula",
+      "kanagawa": "Kanagawa",
+      "catppuccin_mocha": "Catppuccin Mocha",
+      "gruvbox_dark": "Gruvbox Dark",
+      "tokyo_night": "Tokyo Night",
+      "one_dark_pro": "One Dark Pro",
+      "solarized_dark": "Solarized Dark"
+    }
   }
 }

@@ -8,6 +8,8 @@ import { auth0 } from "@/lib/auth0";
 import { prisma } from "@/lib/prisma";
 import { IUserDTO } from "@/shared/api/models/IUser";
 import { Toaster } from "sonner";
+import ThemeInitializer from "@/shared/components/ThemeInitializer";
+import { cookies } from "next/headers";
 
 export default async function RootLayout({
   children,
@@ -19,6 +21,9 @@ export default async function RootLayout({
   const { lang } = await params;
   const session = await auth0.getSession();
   const dict = await getDictionary(lang);
+  const { get } = await cookies();
+
+  const theme = get("theme")?.value || "kanagawa";
 
   let currentUser: IUserDTO | null = null;
 
@@ -43,7 +48,7 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`h-full antialiased ${lato.variable} ${spectral.variable}`}
-      data-theme="nord"
+      data-theme={theme}
     >
       <body className="flex min-h-full flex-col">
         <SidebarProvider>

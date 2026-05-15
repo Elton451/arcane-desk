@@ -3,7 +3,6 @@ import {
   FileText,
   FolderKanban,
   Globe,
-  LayoutGrid,
   NotebookText,
   UserRound,
 } from "lucide-react";
@@ -24,11 +23,6 @@ const navbarLinks = (
 
   if (isInCampaign && campaignId) {
     return [
-      {
-        href: `/campaign/${campaignId}/dashboard`,
-        label: navbarDict.dashboard,
-        icon: LayoutGrid,
-      },
       {
         href: `/campaign/${campaignId}/session`,
         label: navbarDict.session_review,
