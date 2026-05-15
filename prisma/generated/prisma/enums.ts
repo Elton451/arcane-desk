@@ -8,7 +8,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const NoteCategory = {
+  GENERAL: 'GENERAL',
+  PLOT: 'PLOT',
+  NPC: 'NPC',
+  LOCATION: 'LOCATION',
+  ITEM: 'ITEM',
+  SESSION: 'SESSION',
+  LORE: 'LORE'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type NoteCategory = (typeof NoteCategory)[keyof typeof NoteCategory]

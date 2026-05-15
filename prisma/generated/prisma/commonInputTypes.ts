@@ -188,6 +188,23 @@ export type IntWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntFilter<$PrismaModel>
 }
 
+export type EnumNoteCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteCategory | Prisma.EnumNoteCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel> | $Enums.NoteCategory
+}
+
+export type EnumNoteCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteCategory | Prisma.EnumNoteCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteCategoryWithAggregatesFilter<$PrismaModel> | $Enums.NoteCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -374,6 +391,23 @@ export type NestedFloatFilter<$PrismaModel = never> = {
   gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   not?: Prisma.NestedFloatFilter<$PrismaModel> | number
+}
+
+export type NestedEnumNoteCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteCategory | Prisma.EnumNoteCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel> | $Enums.NoteCategory
+}
+
+export type NestedEnumNoteCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteCategory | Prisma.EnumNoteCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteCategory[] | Prisma.ListEnumNoteCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteCategoryWithAggregatesFilter<$PrismaModel> | $Enums.NoteCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumNoteCategoryFilter<$PrismaModel>
 }
 
 

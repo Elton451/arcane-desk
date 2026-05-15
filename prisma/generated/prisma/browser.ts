@@ -42,6 +42,11 @@ export type VerificationToken = Prisma.VerificationTokenModel
  */
 export type Campaign = Prisma.CampaignModel
 /**
+ * Model CampaignNote
+ * 
+ */
+export type CampaignNote = Prisma.CampaignNoteModel
+/**
  * Model Npc
  * 
  */

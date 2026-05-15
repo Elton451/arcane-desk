@@ -3,6 +3,7 @@
     "previous": "Previous",
     "next": "Next",
     "edit": "Edit",
+    "cancel": "Cancel",
 		"delete": "Delete"
   },
   "navbar": {
@@ -85,5 +86,33 @@
 		"show_details": "Mostrar detalhes",
 		"player": "Player",
 		"players": "Players"
-	}
+	},
+  "note": {
+    "page_title": "Campaign Notes",
+    "label_title": "Title",
+    "placeholder_title": "Note title",
+    "label_category": "Category",
+    "label_content": "Content",
+    "placeholder_content": "Write your note here...",
+    "add_note": "Add Note",
+    "filter_all": "All",
+    "empty_list": "No notes yet. Create your first note above.",
+    "empty_filtered": "No notes match this category.",
+    "delete_confirm_title": "Delete note?",
+    "delete_confirm": "This note will be permanently removed.",
+    "note_created_successfully": "Note \"{title}\" created",
+    "deleted_successfully": "Note deleted",
+    "error_creating": "Error creating note",
+    "error_deleting": "Error deleting note",
+    "error_loading": "Error loading notes",
+    "categories": {
+      "general": "General",
+      "plot": "Plot",
+      "npc": "NPC",
+      "location": "Location",
+      "item": "Item",
+      "session": "Session",
+      "lore": "Lore"
+    }
+  }
 }

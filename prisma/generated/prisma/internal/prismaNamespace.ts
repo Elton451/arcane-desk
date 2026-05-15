@@ -388,6 +388,7 @@ export const ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Campaign: 'Campaign',
+  CampaignNote: 'CampaignNote',
   Npc: 'Npc',
   CampaignSession: 'CampaignSession'
 } as const
@@ -405,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "campaign" | "npc" | "campaignSession"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "campaign" | "campaignNote" | "npc" | "campaignSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -779,6 +780,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CampaignNote: {
+      payload: Prisma.$CampaignNotePayload<ExtArgs>
+      fields: Prisma.CampaignNoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CampaignNoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CampaignNoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        findFirst: {
+          args: Prisma.CampaignNoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CampaignNoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        findMany: {
+          args: Prisma.CampaignNoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>[]
+        }
+        create: {
+          args: Prisma.CampaignNoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        createMany: {
+          args: Prisma.CampaignNoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CampaignNoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>[]
+        }
+        delete: {
+          args: Prisma.CampaignNoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        update: {
+          args: Prisma.CampaignNoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        deleteMany: {
+          args: Prisma.CampaignNoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CampaignNoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CampaignNoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>[]
+        }
+        upsert: {
+          args: Prisma.CampaignNoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignNotePayload>
+        }
+        aggregate: {
+          args: Prisma.CampaignNoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaignNote>
+        }
+        groupBy: {
+          args: Prisma.CampaignNoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignNoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CampaignNoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignNoteCountAggregateOutputType> | number
+        }
+      }
+    }
     Npc: {
       payload: Prisma.$NpcPayload<ExtArgs>
       fields: Prisma.NpcFieldRefs
@@ -1031,6 +1106,19 @@ export const CampaignScalarFieldEnum = {
 export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
 
 
+export const CampaignNoteScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  category: 'category',
+  date: 'date',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignNoteScalarFieldEnum = (typeof CampaignNoteScalarFieldEnum)[keyof typeof CampaignNoteScalarFieldEnum]
+
+
 export const NpcScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1127,6 +1215,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'NoteCategory'
+ */
+export type EnumNoteCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NoteCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'NoteCategory[]'
+ */
+export type ListEnumNoteCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NoteCategory[]'>
     
 
 
@@ -1243,6 +1345,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   verificationToken?: Prisma.VerificationTokenOmit
   campaign?: Prisma.CampaignOmit
+  campaignNote?: Prisma.CampaignNoteOmit
   npc?: Prisma.NpcOmit
   campaignSession?: Prisma.CampaignSessionOmit
 }

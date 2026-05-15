@@ -3,7 +3,8 @@
     "previous": "Anterior",
     "next": "Próximo",
     "delete": "Deletar",
-    "edit": "Editar"
+    "edit": "Editar",
+    "cancel": "Cancelar"
   },
   "navbar": {
     "subtitle": "Gerenciador de campanhas",
@@ -86,5 +87,33 @@
 		"show_details": "Mostrar detalhes",
 		"player": "Jogador",
 		"players": "Jogadores"
-	}
+	},
+  "note": {
+    "page_title": "Notas da Campanha",
+    "label_title": "Título",
+    "placeholder_title": "Título da nota",
+    "label_category": "Categoria",
+    "label_content": "Conteúdo",
+    "placeholder_content": "Escreva sua nota aqui...",
+    "add_note": "Adicionar Nota",
+    "filter_all": "Todas",
+    "empty_list": "Nenhuma nota ainda. Crie sua primeira nota acima.",
+    "empty_filtered": "Nenhuma nota corresponde a esta categoria.",
+    "delete_confirm_title": "Excluir nota?",
+    "delete_confirm": "Esta nota será removida permanentemente.",
+    "note_created_successfully": "Nota \"{title}\" criada",
+    "deleted_successfully": "Nota excluída",
+    "error_creating": "Erro ao criar nota",
+    "error_deleting": "Erro ao excluir nota",
+    "error_loading": "Erro ao carregar notas",
+    "categories": {
+      "general": "Geral",
+      "plot": "Enredo",
+      "npc": "NPC",
+      "location": "Local",
+      "item": "Item",
+      "session": "Sessão",
+      "lore": "Lore"
+    }
+  }
 }

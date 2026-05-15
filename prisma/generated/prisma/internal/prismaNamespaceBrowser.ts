@@ -55,6 +55,7 @@ export const ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Campaign: 'Campaign',
+  CampaignNote: 'CampaignNote',
   Npc: 'Npc',
   CampaignSession: 'CampaignSession'
 } as const
@@ -138,6 +139,19 @@ export const CampaignScalarFieldEnum = {
 } as const
 
 export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
+
+
+export const CampaignNoteScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  category: 'category',
+  date: 'date',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignNoteScalarFieldEnum = (typeof CampaignNoteScalarFieldEnum)[keyof typeof CampaignNoteScalarFieldEnum]
 
 
 export const NpcScalarFieldEnum = {

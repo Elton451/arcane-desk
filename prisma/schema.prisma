@@ -60,6 +60,16 @@ model VerificationToken {
 	@@unique([identifier, token])
 }
 
+enum NoteCategory {
+	GENERAL
+	PLOT
+	NPC
+	LOCATION
+	ITEM
+	SESSION
+	LORE
+}
+
 model Campaign {
 	id Int @id @default(autoincrement())
 	name String
@@ -70,6 +80,18 @@ model Campaign {
 	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 	npcs Npc[]
 	sessions CampaignSession[]
+	notes CampaignNote[]
+}
+
+model CampaignNote {
+	id Int @id @default(autoincrement())
+	title String
+	content String @db.Text
+	category NoteCategory @default(GENERAL)
+	date DateTime @default(now())
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
 }
 
 model Npc {
