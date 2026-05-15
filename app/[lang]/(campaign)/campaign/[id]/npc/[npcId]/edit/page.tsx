@@ -1,6 +1,7 @@
 import getNpc from "@/features/npc/actions/getNpc";
 import NPCEditForm from "@/features/npc/components/form/NPCEditForm";
 import { getDictionary } from "@/shared/i18n/dictionaries";
+import { Lang } from "@/shared/types/i18n";
 import { Params } from "@/shared/types/params.type";
 
 interface NPCEditProps {
@@ -9,7 +10,7 @@ interface NPCEditProps {
 
 const NPCEdit = async ({ params }: NPCEditProps) => {
   const { npcId, lang } = await params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang as Lang);
 
   const { data: npc } = await getNpc(Number(npcId));
 

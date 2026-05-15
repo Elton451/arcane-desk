@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import NpcDescription from "@/features/npc/components/NpcDescription/NpcDescription";
 import getInitials from "@/shared/utils/getInitials.utils";
 import NpcDelete from "@/features/npc/components/form/NPCDelete";
+import { Lang } from "@/shared/types/i18n";
 
 interface NpcDetailPageProps {
   params: Promise<Params>;
@@ -14,8 +15,8 @@ interface NpcDetailPageProps {
 
 const NPCPage = async ({ params }: NpcDetailPageProps) => {
   const { lang, npcId, id: campaignId } = await params;
-  const dict = await getDictionary(lang);
-  let result = await getNpc(Number(npcId));
+  const dict = await getDictionary(lang as Lang);
+  const result = await getNpc(Number(npcId));
 
   if (!result.success || !result.data) {
     notFound();
@@ -53,7 +54,11 @@ const NPCPage = async ({ params }: NpcDetailPageProps) => {
           >
             {dict.common.edit}
           </Link>
-					<NpcDelete dict={dict} npcId={Number(npcId)} redirectUrl={`/${lang}/campaign/${campaignId}/npc`} />
+          <NpcDelete
+            dict={dict}
+            npcId={Number(npcId)}
+            redirectUrl={`/${lang}/campaign/${campaignId}/npc`}
+          />
         </div>
       </div>
 

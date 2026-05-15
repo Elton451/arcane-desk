@@ -9,12 +9,13 @@ const CampaignLayout = async ({
   children,
   params,
 }: {
-  params: Promise<{ lang: Lang; id: string }>;
+  params: Promise<{ lang: string; id: string }>;
   children: React.ReactNode;
 }) => {
   const { lang, id } = await params;
+  const safeLang = lang as Lang;
 
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(safeLang);
   const session = await auth0.getSession();
 
   let currentUser: IUserDTO | null = null;
@@ -42,14 +43,13 @@ const CampaignLayout = async ({
         name: dbUser.name,
         displayName: dbUser.displayName,
         image: dbUser.image,
-        username: dbUser.username,
       };
     }
   }
 
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <main className="flex-1 w-full">
+      <main className="w-full flex-1">
         <Navbar
           dict={dict}
           campaignName={campaignName || ""}

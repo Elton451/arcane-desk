@@ -1,6 +1,7 @@
 import NpcList from "@/features/npc/components/npcList/NpcList";
 import { Button } from "@/shared/components/ui/button";
 import { getDictionary } from "@/shared/i18n/dictionaries";
+import { Lang } from "@/shared/types/i18n";
 import { Params } from "@/shared/types/params.type";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ interface NPCPageProps {
 
 const NPCPage = async ({ params }: NPCPageProps) => {
   const { lang, id } = await params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang as Lang);
 
   return (
     <>

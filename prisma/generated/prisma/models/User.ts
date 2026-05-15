@@ -33,7 +33,6 @@ export type UserMinAggregateOutputType = {
   lastLoginAt: Date | null
   createdAt: Date | null
   displayName: string | null
-  username: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -46,7 +45,6 @@ export type UserMaxAggregateOutputType = {
   lastLoginAt: Date | null
   createdAt: Date | null
   displayName: string | null
-  username: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -59,7 +57,6 @@ export type UserCountAggregateOutputType = {
   lastLoginAt: number
   createdAt: number
   displayName: number
-  username: number
   _all: number
 }
 
@@ -74,7 +71,6 @@ export type UserMinAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   displayName?: true
-  username?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -87,7 +83,6 @@ export type UserMaxAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   displayName?: true
-  username?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -100,7 +95,6 @@ export type UserCountAggregateInputType = {
   lastLoginAt?: true
   createdAt?: true
   displayName?: true
-  username?: true
   _all?: true
 }
 
@@ -186,7 +180,6 @@ export type UserGroupByOutputType = {
   lastLoginAt: Date
   createdAt: Date
   displayName: string | null
-  username: string
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -220,7 +213,6 @@ export type UserWhereInput = {
   lastLoginAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   displayName?: Prisma.StringNullableFilter<"User"> | string | null
-  username?: Prisma.StringFilter<"User"> | string
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   campaigns?: Prisma.CampaignListRelationFilter
@@ -236,7 +228,6 @@ export type UserOrderByWithRelationInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   displayName?: Prisma.SortOrderInput | Prisma.SortOrder
-  username?: Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   campaigns?: Prisma.CampaignOrderByRelationAggregateInput
@@ -246,7 +237,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   auth0Id?: string
   email?: string
-  username?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -259,7 +249,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   campaigns?: Prisma.CampaignListRelationFilter
-}, "id" | "auth0Id" | "email" | "username">
+}, "id" | "auth0Id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -271,7 +261,6 @@ export type UserOrderByWithAggregationInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   displayName?: Prisma.SortOrderInput | Prisma.SortOrder
-  username?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -290,7 +279,6 @@ export type UserScalarWhereWithAggregatesInput = {
   lastLoginAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   displayName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  username?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
@@ -303,7 +291,6 @@ export type UserCreateInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignCreateNestedManyWithoutOwnerInput
@@ -319,7 +306,6 @@ export type UserUncheckedCreateInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignUncheckedCreateNestedManyWithoutOwnerInput
@@ -335,7 +321,6 @@ export type UserUpdateInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUpdateManyWithoutOwnerNestedInput
@@ -351,7 +336,6 @@ export type UserUncheckedUpdateInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUncheckedUpdateManyWithoutOwnerNestedInput
@@ -367,7 +351,6 @@ export type UserCreateManyInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
 }
 
 export type UserUpdateManyMutationInput = {
@@ -380,7 +363,6 @@ export type UserUpdateManyMutationInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -393,7 +375,6 @@ export type UserUncheckedUpdateManyInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -406,7 +387,6 @@ export type UserCountOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
-  username?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -419,7 +399,6 @@ export type UserMaxOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
-  username?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -432,7 +411,6 @@ export type UserMinOrderByAggregateInput = {
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
-  username?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -508,7 +486,6 @@ export type UserCreateWithoutAccountsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignCreateNestedManyWithoutOwnerInput
 }
@@ -523,7 +500,6 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -554,7 +530,6 @@ export type UserUpdateWithoutAccountsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUpdateManyWithoutOwnerNestedInput
 }
@@ -569,7 +544,6 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUncheckedUpdateManyWithoutOwnerNestedInput
 }
@@ -584,7 +558,6 @@ export type UserCreateWithoutSessionsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignCreateNestedManyWithoutOwnerInput
 }
@@ -599,7 +572,6 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   campaigns?: Prisma.CampaignUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -630,7 +602,6 @@ export type UserUpdateWithoutSessionsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUpdateManyWithoutOwnerNestedInput
 }
@@ -645,7 +616,6 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   campaigns?: Prisma.CampaignUncheckedUpdateManyWithoutOwnerNestedInput
 }
@@ -660,7 +630,6 @@ export type UserCreateWithoutCampaignsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
@@ -675,7 +644,6 @@ export type UserUncheckedCreateWithoutCampaignsInput = {
   lastLoginAt: Date | string
   createdAt?: Date | string
   displayName?: string | null
-  username: string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
@@ -706,7 +674,6 @@ export type UserUpdateWithoutCampaignsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
@@ -721,7 +688,6 @@ export type UserUncheckedUpdateWithoutCampaignsInput = {
   lastLoginAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -785,7 +751,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lastLoginAt?: boolean
   createdAt?: boolean
   displayName?: boolean
-  username?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   campaigns?: boolean | Prisma.User$campaignsArgs<ExtArgs>
@@ -802,7 +767,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastLoginAt?: boolean
   createdAt?: boolean
   displayName?: boolean
-  username?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -815,7 +779,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastLoginAt?: boolean
   createdAt?: boolean
   displayName?: boolean
-  username?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -828,10 +791,9 @@ export type UserSelectScalar = {
   lastLoginAt?: boolean
   createdAt?: boolean
   displayName?: boolean
-  username?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "auth0Id" | "name" | "email" | "emailVerified" | "image" | "lastLoginAt" | "createdAt" | "displayName" | "username", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "auth0Id" | "name" | "email" | "emailVerified" | "image" | "lastLoginAt" | "createdAt" | "displayName", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
@@ -858,7 +820,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lastLoginAt: Date
     createdAt: Date
     displayName: string | null
-    username: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1294,7 +1255,6 @@ export interface UserFieldRefs {
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly displayName: Prisma.FieldRef<"User", 'String'>
-  readonly username: Prisma.FieldRef<"User", 'String'>
 }
     
 

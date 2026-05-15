@@ -1,7 +1,5 @@
-import { Lang } from "./i18n";
-
 export type Params = {
-  lang: Lang;
+  lang: string;
   id: string;
   npcId: string;
 };
