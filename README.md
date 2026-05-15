@@ -23,9 +23,8 @@ Together, these rules encode **how modules are allowed to depend on each other**
 
 Prettier uses **default options** (empty `.prettierrc`). The goal is **code conformity**: one automatic formatter, no bike-shedding on style. It works with ESLint via `eslint-config-prettier` / `eslint-plugin-prettier` so lint and format do not fight each other.
 
-### Jest (`npm test` / `npm run test:watch`)
-
-Tests run through **`next/jest`** with **`jsdom`** and the same **path aliases** as the app (`@/`, `@app/`, `@features/`, `@lib/`, `@shared/`). That keeps tests aligned with how code is imported in production. Automated tests give **confidence that behavior stays correct** when you change implementation details or upgrade dependencies.
+### Testing
+> ⚠️ Tests are not yet implemented. This is a known gap and a planned priority for the next development phase.
 
 ---
 
@@ -33,5 +32,3 @@ Tests run through **`next/jest`** with **`jsdom`** and the same **path aliases**
 | -------------------- | ------------------------------------------------ |
 | `npm run analyze`    | Validate dependency rules on features/lib/shared |
 | `npm run format`     | Format the repo with Prettier                    |
-| `npm test`           | Run the Jest suite                               |
-| `npm run test:watch` | Jest in watch mode                               |
