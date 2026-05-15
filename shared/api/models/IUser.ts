@@ -19,5 +19,4 @@ export interface IUserDTO {
   email: string | null;
   image: string | null;
   displayName: string | null;
-  username: string;
 }

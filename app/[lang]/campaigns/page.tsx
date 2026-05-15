@@ -4,6 +4,7 @@ import {
   CampaignList,
   CreateCampaignModal,
 } from "@/features/campaign/components";
+import { Lang } from "@/shared/types/i18n";
 
 interface CampaignPageProps {
   params: Promise<Params>;
@@ -11,7 +12,7 @@ interface CampaignPageProps {
 
 const CampaignsPage = async ({ params }: CampaignPageProps) => {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang as Lang);
   const campaignDict = dict.campaign;
 
   return (

@@ -2,6 +2,7 @@ import { getSessionsByCampaignId } from "@/features/session/actions/getSessionsB
 import { SessionList } from "@/features/session/components/sessionList/SessionList";
 import { Button } from "@/shared/components/ui/button";
 import { getDictionary } from "@/shared/i18n/dictionaries";
+import { Lang } from "@/shared/types/i18n";
 import { Params } from "@/shared/types/params.type";
 import Link from "next/link";
 
@@ -11,7 +12,8 @@ interface SessionPageProps {
 
 const SessionPage = async ({ params }: SessionPageProps) => {
   const { lang, id } = await params;
-  const dict = await getDictionary(lang);
+  const safeLang = lang as Lang;
+  const dict = await getDictionary(safeLang);
   const { data: sessions } = await getSessionsByCampaignId(Number(id));
 
   return (
@@ -28,7 +30,7 @@ const SessionPage = async ({ params }: SessionPageProps) => {
         <SessionList
           sessions={sessions}
           dict={dict}
-          lang={lang}
+          lang={safeLang}
           campaignId={Number(id)}
         />
       </div>

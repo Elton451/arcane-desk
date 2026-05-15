@@ -2,25 +2,25 @@ import { lato, spectral } from "@shared/assets/fonts";
 import "./globals.css";
 import Navbar from "@/shared/components/navbar/Navbar";
 import { SidebarProvider } from "@/shared/components/ui/sidebar";
-import { Params } from "@/shared/types/params.type";
 import { getDictionary } from "@/shared/i18n/dictionaries";
 import { auth0 } from "@/lib/auth0";
 import { prisma } from "@/lib/prisma";
 import { IUserDTO } from "@/shared/api/models/IUser";
 import { Toaster } from "sonner";
-import ThemeInitializer from "@/shared/components/ThemeInitializer";
 import { cookies } from "next/headers";
+import { Lang } from "@/shared/types/i18n";
 
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<Params>;
+  params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
+  const safeLang = lang as Lang;
   const session = await auth0.getSession();
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(safeLang);
   const { get } = await cookies();
 
   const theme = get("theme")?.value || "kanagawa";
@@ -39,7 +39,6 @@ export default async function RootLayout({
         name: dbUser.name,
         displayName: dbUser.displayName,
         image: dbUser.image,
-        username: dbUser.username,
       };
     }
   }

@@ -1,5 +1,6 @@
 import NotesPage from "@/features/note/components/NotesPage";
 import { getDictionary } from "@/shared/i18n/dictionaries";
+import { Lang } from "@/shared/types/i18n";
 import { Params } from "@/shared/types/params.type";
 
 interface CampaignNotesPageProps {
@@ -8,7 +9,7 @@ interface CampaignNotesPageProps {
 
 const CampaignNotesPage = async ({ params }: CampaignNotesPageProps) => {
   const { lang, id } = await params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang as Lang);
 
   return (
     <div className="px-6 py-8">

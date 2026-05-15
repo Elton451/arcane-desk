@@ -19,7 +19,6 @@ interface ProfileCardProps {
 const ProfileCard = ({ dict, user }: ProfileCardProps) => {
   const profileDict = dict.profile;
   const displayName = user.displayName || user.name || "";
-  const username = user.username ? `@${user.username}` : "";
   const initials = getInitials(displayName || user.name || "?");
 
   const fields = [
@@ -27,11 +26,6 @@ const ProfileCard = ({ dict, user }: ProfileCardProps) => {
       id: "display-name",
       label: profileDict.display_name,
       value: displayName,
-    },
-    {
-      id: "username",
-      label: profileDict.username,
-      value: username,
     },
     {
       id: "email",
@@ -54,9 +48,6 @@ const ProfileCard = ({ dict, user }: ProfileCardProps) => {
           <p className="text-foreground truncate text-lg font-bold">
             {displayName}
           </p>
-          {username && (
-            <p className="text-muted-foreground truncate text-sm">{username}</p>
-          )}
         </div>
       </div>
 
