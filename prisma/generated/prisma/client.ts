@@ -66,6 +66,21 @@ export type VerificationToken = Prisma.VerificationTokenModel
  */
 export type Campaign = Prisma.CampaignModel
 /**
+ * Model CampaignLocation
+ * 
+ */
+export type CampaignLocation = Prisma.CampaignLocationModel
+/**
+ * Model CampaignFaction
+ * 
+ */
+export type CampaignFaction = Prisma.CampaignFactionModel
+/**
+ * Model CampaignLoreEntry
+ * 
+ */
+export type CampaignLoreEntry = Prisma.CampaignLoreEntryModel
+/**
  * Model CampaignNote
  * 
  */

@@ -227,6 +227,9 @@ export type CampaignWhereInput = {
   npcs?: Prisma.NpcListRelationFilter
   sessions?: Prisma.CampaignSessionListRelationFilter
   notes?: Prisma.CampaignNoteListRelationFilter
+  locations?: Prisma.CampaignLocationListRelationFilter
+  factions?: Prisma.CampaignFactionListRelationFilter
+  loreEntries?: Prisma.CampaignLoreEntryListRelationFilter
 }
 
 export type CampaignOrderByWithRelationInput = {
@@ -240,6 +243,9 @@ export type CampaignOrderByWithRelationInput = {
   npcs?: Prisma.NpcOrderByRelationAggregateInput
   sessions?: Prisma.CampaignSessionOrderByRelationAggregateInput
   notes?: Prisma.CampaignNoteOrderByRelationAggregateInput
+  locations?: Prisma.CampaignLocationOrderByRelationAggregateInput
+  factions?: Prisma.CampaignFactionOrderByRelationAggregateInput
+  loreEntries?: Prisma.CampaignLoreEntryOrderByRelationAggregateInput
 }
 
 export type CampaignWhereUniqueInput = Prisma.AtLeast<{
@@ -256,6 +262,9 @@ export type CampaignWhereUniqueInput = Prisma.AtLeast<{
   npcs?: Prisma.NpcListRelationFilter
   sessions?: Prisma.CampaignSessionListRelationFilter
   notes?: Prisma.CampaignNoteListRelationFilter
+  locations?: Prisma.CampaignLocationListRelationFilter
+  factions?: Prisma.CampaignFactionListRelationFilter
+  loreEntries?: Prisma.CampaignLoreEntryListRelationFilter
 }, "id">
 
 export type CampaignOrderByWithAggregationInput = {
@@ -293,6 +302,9 @@ export type CampaignCreateInput = {
   npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateInput = {
@@ -305,6 +317,9 @@ export type CampaignUncheckedCreateInput = {
   npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUpdateInput = {
@@ -316,6 +331,9 @@ export type CampaignUpdateInput = {
   npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateInput = {
@@ -328,6 +346,9 @@ export type CampaignUncheckedUpdateInput = {
   npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyInput = {
@@ -455,6 +476,48 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type CampaignCreateNestedOneWithoutLocationsInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLocationsInput, Prisma.CampaignUncheckedCreateWithoutLocationsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLocationsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneRequiredWithoutLocationsNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLocationsInput, Prisma.CampaignUncheckedCreateWithoutLocationsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLocationsInput
+  upsert?: Prisma.CampaignUpsertWithoutLocationsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutLocationsInput, Prisma.CampaignUpdateWithoutLocationsInput>, Prisma.CampaignUncheckedUpdateWithoutLocationsInput>
+}
+
+export type CampaignCreateNestedOneWithoutFactionsInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutFactionsInput, Prisma.CampaignUncheckedCreateWithoutFactionsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutFactionsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneRequiredWithoutFactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutFactionsInput, Prisma.CampaignUncheckedCreateWithoutFactionsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutFactionsInput
+  upsert?: Prisma.CampaignUpsertWithoutFactionsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutFactionsInput, Prisma.CampaignUpdateWithoutFactionsInput>, Prisma.CampaignUncheckedUpdateWithoutFactionsInput>
+}
+
+export type CampaignCreateNestedOneWithoutLoreEntriesInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLoreEntriesInput, Prisma.CampaignUncheckedCreateWithoutLoreEntriesInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLoreEntriesInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneRequiredWithoutLoreEntriesNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLoreEntriesInput, Prisma.CampaignUncheckedCreateWithoutLoreEntriesInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLoreEntriesInput
+  upsert?: Prisma.CampaignUpsertWithoutLoreEntriesInput
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutLoreEntriesInput, Prisma.CampaignUpdateWithoutLoreEntriesInput>, Prisma.CampaignUncheckedUpdateWithoutLoreEntriesInput>
+}
+
 export type CampaignCreateNestedOneWithoutNotesInput = {
   create?: Prisma.XOR<Prisma.CampaignCreateWithoutNotesInput, Prisma.CampaignUncheckedCreateWithoutNotesInput>
   connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutNotesInput
@@ -505,6 +568,9 @@ export type CampaignCreateWithoutOwnerInput = {
   npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutOwnerInput = {
@@ -516,6 +582,9 @@ export type CampaignUncheckedCreateWithoutOwnerInput = {
   npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutOwnerInput = {
@@ -556,6 +625,216 @@ export type CampaignScalarWhereInput = {
   ownerId?: Prisma.StringFilter<"Campaign"> | string
 }
 
+export type CampaignCreateWithoutLocationsInput = {
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
+  npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutLocationsInput = {
+  id?: number
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  ownerId: string
+  npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutLocationsInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLocationsInput, Prisma.CampaignUncheckedCreateWithoutLocationsInput>
+}
+
+export type CampaignUpsertWithoutLocationsInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutLocationsInput, Prisma.CampaignUncheckedUpdateWithoutLocationsInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLocationsInput, Prisma.CampaignUncheckedCreateWithoutLocationsInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutLocationsInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutLocationsInput, Prisma.CampaignUncheckedUpdateWithoutLocationsInput>
+}
+
+export type CampaignUpdateWithoutLocationsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
+  npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutLocationsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignCreateWithoutFactionsInput = {
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
+  npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutFactionsInput = {
+  id?: number
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  ownerId: string
+  npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutFactionsInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutFactionsInput, Prisma.CampaignUncheckedCreateWithoutFactionsInput>
+}
+
+export type CampaignUpsertWithoutFactionsInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutFactionsInput, Prisma.CampaignUncheckedUpdateWithoutFactionsInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutFactionsInput, Prisma.CampaignUncheckedCreateWithoutFactionsInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutFactionsInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutFactionsInput, Prisma.CampaignUncheckedUpdateWithoutFactionsInput>
+}
+
+export type CampaignUpdateWithoutFactionsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
+  npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutFactionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignCreateWithoutLoreEntriesInput = {
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
+  npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutLoreEntriesInput = {
+  id?: number
+  name: string
+  description?: string | null
+  createdAt?: Date | string
+  system?: string | null
+  ownerId: string
+  npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
+  sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
+  notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutLoreEntriesInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLoreEntriesInput, Prisma.CampaignUncheckedCreateWithoutLoreEntriesInput>
+}
+
+export type CampaignUpsertWithoutLoreEntriesInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutLoreEntriesInput, Prisma.CampaignUncheckedUpdateWithoutLoreEntriesInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLoreEntriesInput, Prisma.CampaignUncheckedCreateWithoutLoreEntriesInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutLoreEntriesInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutLoreEntriesInput, Prisma.CampaignUncheckedUpdateWithoutLoreEntriesInput>
+}
+
+export type CampaignUpdateWithoutLoreEntriesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
+  npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutLoreEntriesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  system?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
+  sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
+  notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
 export type CampaignCreateWithoutNotesInput = {
   name: string
   description?: string | null
@@ -564,6 +843,9 @@ export type CampaignCreateWithoutNotesInput = {
   owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
   npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutNotesInput = {
@@ -575,6 +857,9 @@ export type CampaignUncheckedCreateWithoutNotesInput = {
   ownerId: string
   npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
   sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutNotesInput = {
@@ -601,6 +886,9 @@ export type CampaignUpdateWithoutNotesInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
   npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutNotesInput = {
@@ -612,6 +900,9 @@ export type CampaignUncheckedUpdateWithoutNotesInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateWithoutNpcsInput = {
@@ -622,6 +913,9 @@ export type CampaignCreateWithoutNpcsInput = {
   owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
   sessions?: Prisma.CampaignSessionCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutNpcsInput = {
@@ -633,6 +927,9 @@ export type CampaignUncheckedCreateWithoutNpcsInput = {
   ownerId: string
   sessions?: Prisma.CampaignSessionUncheckedCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutNpcsInput = {
@@ -659,6 +956,9 @@ export type CampaignUpdateWithoutNpcsInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
   sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutNpcsInput = {
@@ -670,6 +970,9 @@ export type CampaignUncheckedUpdateWithoutNpcsInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateWithoutSessionsInput = {
@@ -680,6 +983,9 @@ export type CampaignCreateWithoutSessionsInput = {
   owner: Prisma.UserCreateNestedOneWithoutCampaignsInput
   npcs?: Prisma.NpcCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutSessionsInput = {
@@ -691,6 +997,9 @@ export type CampaignUncheckedCreateWithoutSessionsInput = {
   ownerId: string
   npcs?: Prisma.NpcUncheckedCreateNestedManyWithoutCampaignInput
   notes?: Prisma.CampaignNoteUncheckedCreateNestedManyWithoutCampaignInput
+  locations?: Prisma.CampaignLocationUncheckedCreateNestedManyWithoutCampaignInput
+  factions?: Prisma.CampaignFactionUncheckedCreateNestedManyWithoutCampaignInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutSessionsInput = {
@@ -717,6 +1026,9 @@ export type CampaignUpdateWithoutSessionsInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutCampaignsNestedInput
   npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutSessionsInput = {
@@ -728,6 +1040,9 @@ export type CampaignUncheckedUpdateWithoutSessionsInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyOwnerInput = {
@@ -746,6 +1061,9 @@ export type CampaignUpdateWithoutOwnerInput = {
   npcs?: Prisma.NpcUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutOwnerInput = {
@@ -757,6 +1075,9 @@ export type CampaignUncheckedUpdateWithoutOwnerInput = {
   npcs?: Prisma.NpcUncheckedUpdateManyWithoutCampaignNestedInput
   sessions?: Prisma.CampaignSessionUncheckedUpdateManyWithoutCampaignNestedInput
   notes?: Prisma.CampaignNoteUncheckedUpdateManyWithoutCampaignNestedInput
+  locations?: Prisma.CampaignLocationUncheckedUpdateManyWithoutCampaignNestedInput
+  factions?: Prisma.CampaignFactionUncheckedUpdateManyWithoutCampaignNestedInput
+  loreEntries?: Prisma.CampaignLoreEntryUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateManyWithoutOwnerInput = {
@@ -776,12 +1097,18 @@ export type CampaignCountOutputType = {
   npcs: number
   sessions: number
   notes: number
+  locations: number
+  factions: number
+  loreEntries: number
 }
 
 export type CampaignCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   npcs?: boolean | CampaignCountOutputTypeCountNpcsArgs
   sessions?: boolean | CampaignCountOutputTypeCountSessionsArgs
   notes?: boolean | CampaignCountOutputTypeCountNotesArgs
+  locations?: boolean | CampaignCountOutputTypeCountLocationsArgs
+  factions?: boolean | CampaignCountOutputTypeCountFactionsArgs
+  loreEntries?: boolean | CampaignCountOutputTypeCountLoreEntriesArgs
 }
 
 /**
@@ -815,6 +1142,27 @@ export type CampaignCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.
   where?: Prisma.CampaignNoteWhereInput
 }
 
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CampaignLocationWhereInput
+}
+
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountFactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CampaignFactionWhereInput
+}
+
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountLoreEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CampaignLoreEntryWhereInput
+}
+
 
 export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -827,6 +1175,9 @@ export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   npcs?: boolean | Prisma.Campaign$npcsArgs<ExtArgs>
   sessions?: boolean | Prisma.Campaign$sessionsArgs<ExtArgs>
   notes?: boolean | Prisma.Campaign$notesArgs<ExtArgs>
+  locations?: boolean | Prisma.Campaign$locationsArgs<ExtArgs>
+  factions?: boolean | Prisma.Campaign$factionsArgs<ExtArgs>
+  loreEntries?: boolean | Prisma.Campaign$loreEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaign"]>
 
@@ -865,6 +1216,9 @@ export type CampaignInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   npcs?: boolean | Prisma.Campaign$npcsArgs<ExtArgs>
   sessions?: boolean | Prisma.Campaign$sessionsArgs<ExtArgs>
   notes?: boolean | Prisma.Campaign$notesArgs<ExtArgs>
+  locations?: boolean | Prisma.Campaign$locationsArgs<ExtArgs>
+  factions?: boolean | Prisma.Campaign$factionsArgs<ExtArgs>
+  loreEntries?: boolean | Prisma.Campaign$loreEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CampaignIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -881,6 +1235,9 @@ export type $CampaignPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     npcs: Prisma.$NpcPayload<ExtArgs>[]
     sessions: Prisma.$CampaignSessionPayload<ExtArgs>[]
     notes: Prisma.$CampaignNotePayload<ExtArgs>[]
+    locations: Prisma.$CampaignLocationPayload<ExtArgs>[]
+    factions: Prisma.$CampaignFactionPayload<ExtArgs>[]
+    loreEntries: Prisma.$CampaignLoreEntryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1287,6 +1644,9 @@ export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends runtime
   npcs<T extends Prisma.Campaign$npcsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$npcsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NpcPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.Campaign$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notes<T extends Prisma.Campaign$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  locations<T extends Prisma.Campaign$locationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  factions<T extends Prisma.Campaign$factionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$factionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignFactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  loreEntries<T extends Prisma.Campaign$loreEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$loreEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignLoreEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1792,6 +2152,78 @@ export type Campaign$notesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.CampaignNoteScalarFieldEnum | Prisma.CampaignNoteScalarFieldEnum[]
+}
+
+/**
+ * Campaign.locations
+ */
+export type Campaign$locationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CampaignLocation
+   */
+  select?: Prisma.CampaignLocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CampaignLocation
+   */
+  omit?: Prisma.CampaignLocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CampaignLocationInclude<ExtArgs> | null
+  where?: Prisma.CampaignLocationWhereInput
+  orderBy?: Prisma.CampaignLocationOrderByWithRelationInput | Prisma.CampaignLocationOrderByWithRelationInput[]
+  cursor?: Prisma.CampaignLocationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CampaignLocationScalarFieldEnum | Prisma.CampaignLocationScalarFieldEnum[]
+}
+
+/**
+ * Campaign.factions
+ */
+export type Campaign$factionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CampaignFaction
+   */
+  select?: Prisma.CampaignFactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CampaignFaction
+   */
+  omit?: Prisma.CampaignFactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CampaignFactionInclude<ExtArgs> | null
+  where?: Prisma.CampaignFactionWhereInput
+  orderBy?: Prisma.CampaignFactionOrderByWithRelationInput | Prisma.CampaignFactionOrderByWithRelationInput[]
+  cursor?: Prisma.CampaignFactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CampaignFactionScalarFieldEnum | Prisma.CampaignFactionScalarFieldEnum[]
+}
+
+/**
+ * Campaign.loreEntries
+ */
+export type Campaign$loreEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CampaignLoreEntry
+   */
+  select?: Prisma.CampaignLoreEntrySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CampaignLoreEntry
+   */
+  omit?: Prisma.CampaignLoreEntryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CampaignLoreEntryInclude<ExtArgs> | null
+  where?: Prisma.CampaignLoreEntryWhereInput
+  orderBy?: Prisma.CampaignLoreEntryOrderByWithRelationInput | Prisma.CampaignLoreEntryOrderByWithRelationInput[]
+  cursor?: Prisma.CampaignLoreEntryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CampaignLoreEntryScalarFieldEnum | Prisma.CampaignLoreEntryScalarFieldEnum[]
 }
 
 /**

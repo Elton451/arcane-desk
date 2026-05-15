@@ -55,6 +55,9 @@ export const ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Campaign: 'Campaign',
+  CampaignLocation: 'CampaignLocation',
+  CampaignFaction: 'CampaignFaction',
+  CampaignLoreEntry: 'CampaignLoreEntry',
   CampaignNote: 'CampaignNote',
   Npc: 'Npc',
   CampaignSession: 'CampaignSession'
@@ -139,6 +142,51 @@ export const CampaignScalarFieldEnum = {
 } as const
 
 export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
+
+
+export const CampaignLocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  population: 'population',
+  ruler: 'ruler',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignLocationScalarFieldEnum = (typeof CampaignLocationScalarFieldEnum)[keyof typeof CampaignLocationScalarFieldEnum]
+
+
+export const CampaignFactionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  leader: 'leader',
+  goals: 'goals',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignFactionScalarFieldEnum = (typeof CampaignFactionScalarFieldEnum)[keyof typeof CampaignFactionScalarFieldEnum]
+
+
+export const CampaignLoreEntryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  era: 'era',
+  source: 'source',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignLoreEntryScalarFieldEnum = (typeof CampaignLoreEntryScalarFieldEnum)[keyof typeof CampaignLoreEntryScalarFieldEnum]
 
 
 export const CampaignNoteScalarFieldEnum = {

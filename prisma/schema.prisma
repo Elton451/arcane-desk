@@ -81,6 +81,48 @@ model Campaign {
 	npcs Npc[]
 	sessions CampaignSession[]
 	notes CampaignNote[]
+	locations CampaignLocation[]
+	factions CampaignFaction[]
+	loreEntries CampaignLoreEntry[]
+}
+
+model CampaignLocation {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	population String?
+	ruler String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignFaction {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	leader String?
+	goals String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignLoreEntry {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	era String?
+	source String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
 }
 
 model CampaignNote {

@@ -388,6 +388,9 @@ export const ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Campaign: 'Campaign',
+  CampaignLocation: 'CampaignLocation',
+  CampaignFaction: 'CampaignFaction',
+  CampaignLoreEntry: 'CampaignLoreEntry',
   CampaignNote: 'CampaignNote',
   Npc: 'Npc',
   CampaignSession: 'CampaignSession'
@@ -406,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "campaign" | "campaignNote" | "npc" | "campaignSession"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "campaign" | "campaignLocation" | "campaignFaction" | "campaignLoreEntry" | "campaignNote" | "npc" | "campaignSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -780,6 +783,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CampaignLocation: {
+      payload: Prisma.$CampaignLocationPayload<ExtArgs>
+      fields: Prisma.CampaignLocationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CampaignLocationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CampaignLocationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        findFirst: {
+          args: Prisma.CampaignLocationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CampaignLocationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        findMany: {
+          args: Prisma.CampaignLocationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>[]
+        }
+        create: {
+          args: Prisma.CampaignLocationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        createMany: {
+          args: Prisma.CampaignLocationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CampaignLocationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>[]
+        }
+        delete: {
+          args: Prisma.CampaignLocationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        update: {
+          args: Prisma.CampaignLocationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        deleteMany: {
+          args: Prisma.CampaignLocationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CampaignLocationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CampaignLocationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>[]
+        }
+        upsert: {
+          args: Prisma.CampaignLocationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLocationPayload>
+        }
+        aggregate: {
+          args: Prisma.CampaignLocationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaignLocation>
+        }
+        groupBy: {
+          args: Prisma.CampaignLocationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignLocationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CampaignLocationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignLocationCountAggregateOutputType> | number
+        }
+      }
+    }
+    CampaignFaction: {
+      payload: Prisma.$CampaignFactionPayload<ExtArgs>
+      fields: Prisma.CampaignFactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CampaignFactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CampaignFactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        findFirst: {
+          args: Prisma.CampaignFactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CampaignFactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        findMany: {
+          args: Prisma.CampaignFactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>[]
+        }
+        create: {
+          args: Prisma.CampaignFactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        createMany: {
+          args: Prisma.CampaignFactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CampaignFactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>[]
+        }
+        delete: {
+          args: Prisma.CampaignFactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        update: {
+          args: Prisma.CampaignFactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.CampaignFactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CampaignFactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CampaignFactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.CampaignFactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignFactionPayload>
+        }
+        aggregate: {
+          args: Prisma.CampaignFactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaignFaction>
+        }
+        groupBy: {
+          args: Prisma.CampaignFactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignFactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CampaignFactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignFactionCountAggregateOutputType> | number
+        }
+      }
+    }
+    CampaignLoreEntry: {
+      payload: Prisma.$CampaignLoreEntryPayload<ExtArgs>
+      fields: Prisma.CampaignLoreEntryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CampaignLoreEntryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CampaignLoreEntryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        findFirst: {
+          args: Prisma.CampaignLoreEntryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CampaignLoreEntryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        findMany: {
+          args: Prisma.CampaignLoreEntryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>[]
+        }
+        create: {
+          args: Prisma.CampaignLoreEntryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        createMany: {
+          args: Prisma.CampaignLoreEntryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CampaignLoreEntryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>[]
+        }
+        delete: {
+          args: Prisma.CampaignLoreEntryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        update: {
+          args: Prisma.CampaignLoreEntryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        deleteMany: {
+          args: Prisma.CampaignLoreEntryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CampaignLoreEntryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CampaignLoreEntryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>[]
+        }
+        upsert: {
+          args: Prisma.CampaignLoreEntryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignLoreEntryPayload>
+        }
+        aggregate: {
+          args: Prisma.CampaignLoreEntryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaignLoreEntry>
+        }
+        groupBy: {
+          args: Prisma.CampaignLoreEntryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignLoreEntryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CampaignLoreEntryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CampaignLoreEntryCountAggregateOutputType> | number
+        }
+      }
+    }
     CampaignNote: {
       payload: Prisma.$CampaignNotePayload<ExtArgs>
       fields: Prisma.CampaignNoteFieldRefs
@@ -1106,6 +1331,51 @@ export const CampaignScalarFieldEnum = {
 export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
 
 
+export const CampaignLocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  population: 'population',
+  ruler: 'ruler',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignLocationScalarFieldEnum = (typeof CampaignLocationScalarFieldEnum)[keyof typeof CampaignLocationScalarFieldEnum]
+
+
+export const CampaignFactionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  leader: 'leader',
+  goals: 'goals',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignFactionScalarFieldEnum = (typeof CampaignFactionScalarFieldEnum)[keyof typeof CampaignFactionScalarFieldEnum]
+
+
+export const CampaignLoreEntryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  era: 'era',
+  source: 'source',
+  description: 'description',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  campaignId: 'campaignId'
+} as const
+
+export type CampaignLoreEntryScalarFieldEnum = (typeof CampaignLoreEntryScalarFieldEnum)[keyof typeof CampaignLoreEntryScalarFieldEnum]
+
+
 export const CampaignNoteScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -1345,6 +1615,9 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   verificationToken?: Prisma.VerificationTokenOmit
   campaign?: Prisma.CampaignOmit
+  campaignLocation?: Prisma.CampaignLocationOmit
+  campaignFaction?: Prisma.CampaignFactionOmit
+  campaignLoreEntry?: Prisma.CampaignLoreEntryOmit
   campaignNote?: Prisma.CampaignNoteOmit
   npc?: Prisma.NpcOmit
   campaignSession?: Prisma.CampaignSessionOmit
