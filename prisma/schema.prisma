@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+	id String @id @default(cuid())
+	auth0Id String @unique
+	name String?
+	email String? @unique
+	emailVerified DateTime?
+	image String?
+	lastLoginAt DateTime
+	accounts Account[]
+	sessions Session[]
+
+	createdAt DateTime @default(now())
+	displayName String?
+	username String @unique
+
+	campaigns Campaign[]
+}
+
+model Account {
+	id String @id @default(cuid())
+	userId String
+	type String
+	provider String
+	providerAccountId String
+	refresh_token String? @db.Text
+	access_token String? @db.Text
+	expires_at Int?
+	token_type String?
+	scope String
+	id_token String? @db.Text
+	session_state String?
+
+	user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+	@@unique([provider, providerAccountId])
+}
+
+model Session {
+		id String @id @default(cuid())
+		sessionToken String @unique
+		userId String
+		expires DateTime
+		user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+	identifier String
+	token String @unique
+	expires DateTime
+
+	@@unique([identifier, token])
+}
+
+enum NoteCategory {
+	GENERAL
+	PLOT
+	NPC
+	LOCATION
+	ITEM
+	SESSION
+	LORE
+}
+
+model Campaign {
+	id Int @id @default(autoincrement())
+	name String
+	description String?
+	createdAt DateTime @default(now())
+	system String?
+	ownerId String
+	owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+	npcs Npc[]
+	sessions CampaignSession[]
+	notes CampaignNote[]
+	locations CampaignLocation[]
+	factions CampaignFaction[]
+	loreEntries CampaignLoreEntry[]
+}
+
+model CampaignLocation {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	population String?
+	ruler String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignFaction {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	leader String?
+	goals String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignLoreEntry {
+	id Int @id @default(autoincrement())
+	name String
+	type String
+	era String?
+	source String?
+	description String? @db.Text
+	additionalNotes String? @db.Text
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignNote {
+	id Int @id @default(autoincrement())
+	title String
+	content String @db.Text
+	category NoteCategory @default(GENERAL)
+	date DateTime @default(now())
+	createdAt DateTime @default(now())
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model Npc {
+	id Int @id @default(autoincrement())
+	name String 
+	description String
+	role String
+	personality String?
+	campaignId Int
+	campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+model CampaignSession {
+		id Int @id @default(autoincrement())
+		title String
+		date DateTime
+		numberOfPlayers Int
+		sessionSummary String
+		highlights String?
+		improvements String?
+		notes String?
+		campaignId Int
+		campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}

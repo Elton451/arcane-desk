@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arcane Desk
 
-## Getting Started
+Next.js app with a **feature-oriented layout** (`features/`, `lib/`, `shared/`, plus `app/`). Tooling is chosen to keep structure clear, style uniform, and changes safe to ship.
 
-First, run the development server:
+## Architecture
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Code is split by **domain features** and **shared** utilities rather than a single flat `src/`. That makes boundaries explicit and keeps the app layer (`app/`) thin. **Dependency-cruiser** is scoped to `./features`, `./lib`, and `./shared` so dependency rules apply where application logic lives, without noise from the framework-heavy `app/` tree.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tooling
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### dependency-cruiser (`npm run analyze`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Static analysis of import graphs. It helps **maintainability** by flagging problems before they become runtime bugs:
 
-## Learn More
+- **Circular dependencies** — surfaces coupling that makes refactors risky.
+- **Orphan modules** — finds dead or forgotten files (with sensible exceptions for Next.js route files and dotfiles).
+- **Production vs development dependencies** — `app`, `lib`, `shared`, and `features` must not pull **runtime** code from packages only listed in `devDependencies` (type-only imports are allowed).
+- **Package integrity** — missing npm entries, unresolvable imports, duplicate dep types, and deprecated packages are caught early.
 
-To learn more about Next.js, take a look at the following resources:
+Together, these rules encode **how modules are allowed to depend on each other** so the codebase stays navigable as it grows.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prettier (`npm run format`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Prettier uses **default options** (empty `.prettierrc`). The goal is **code conformity**: one automatic formatter, no bike-shedding on style. It works with ESLint via `eslint-config-prettier` / `eslint-plugin-prettier` so lint and format do not fight each other.
 
-## Deploy on Vercel
+### Jest (`npm test` / `npm run test:watch`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tests run through **`next/jest`** with **`jsdom`** and the same **path aliases** as the app (`@/`, `@app/`, `@features/`, `@lib/`, `@shared/`). That keeps tests aligned with how code is imported in production. Automated tests give **confidence that behavior stays correct** when you change implementation details or upgrade dependencies.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+| Command              | Purpose                                          |
+| -------------------- | ------------------------------------------------ |
+| `npm run analyze`    | Validate dependency rules on features/lib/shared |
+| `npm run format`     | Format the repo with Prettier                    |
+| `npm test`           | Run the Jest suite                               |
+| `npm run test:watch` | Jest in watch mode                               |

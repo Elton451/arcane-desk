@@ -13,13 +13,23 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "baseUrl": "./",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@app/*": ["./app/*"],
+      "@features/*": ["./features/*"],
+      "@lib/*": ["./lib/*"],
+      "@shared/*": ["./shared/*"],
+      "@shared/assets/*": ["./shared/assets/*"],
+      "@shared/components/*": ["./shared/components/*"],
+      "@shared/hooks/*": ["./shared/hooks/*"],
+      "@shared/utils/*": ["./shared/utils/*"],
+      "@shared/components/ui/*": ["./shared/components/ui/*"]
     }
   },
   "include": [
