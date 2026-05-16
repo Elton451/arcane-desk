@@ -3,12 +3,11 @@
 import { prisma } from "@/lib/prisma";
 import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
 import DOMPurify from "isomorphic-dompurify";
+import { JSDOM } from "jsdom";
 import getUser from "@/shared/api/services/getUser";
 
 async function createNPC(campaignId: number, formData: NpcSchemaType) {
   const user = await getUser();
-
-  const sanitizedDescription = DOMPurify.sanitize(formData.description);
 
   const validation = NpcSchema.safeParse(formData);
   if (!validation.success) {
@@ -33,6 +32,10 @@ async function createNPC(campaignId: number, formData: NpcSchemaType) {
       message: "Campaign not found",
     };
   }
+
+  const window = new JSDOM("").window;
+  const purify = DOMPurify(window);
+  const sanitizedDescription = purify.sanitize(validation.data.description);
 
   const npc = await prisma.npc.create({
     data: {

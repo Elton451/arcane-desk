@@ -1,6 +1,5 @@
 "use client";
 
-import Markdown from "react-markdown";
 import { useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,6 +9,7 @@ import {
   CollapsibleTrigger,
 } from "@/shared/components/ui/collapsible";
 import { Button } from "@/shared/components/ui/button";
+import parse from "html-react-parser";
 
 interface DescriptionCardProps {
   description: string;
@@ -29,7 +29,7 @@ const NpcDescription = ({
       <div className="border-border bg-card mb-4 rounded-lg border p-4">
         <div className="relative">
           <div className={cn("overflow-hidden", !open && "max-h-20")}>
-            <Markdown>{description}</Markdown>
+            <div>{parse(description)}</div>
           </div>
 
           {/* fade overlay when collapsed */}

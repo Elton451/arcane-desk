@@ -86,21 +86,9 @@ const NewNoteForm = ({ dict, onSubmit, isSubmitting }: NewNoteFormProps) => {
           </select>
         </Field>
 
-        <Field>
-          <FieldLabel htmlFor="note-content">
-            {dict.note.label_content}
-          </FieldLabel>
-          <Textarea
-            id="note-content"
-            placeholder={dict.note.placeholder_content}
-            rows={5}
-            {...register("content")}
-          />
-        </Field>
-
         <Field data-invalid={!!errors.content}>
           <FieldLabel htmlFor="input-field-description">
-            {dict.npc.label_description}
+            {dict.note.label_content}
           </FieldLabel>
           <Controller
             control={control}
