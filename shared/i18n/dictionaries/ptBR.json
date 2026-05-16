@@ -58,7 +58,8 @@
     "hide_description": "Esconder descrição",
     "show_description": "Mostrar descrição",
     "updated_successfully": "NPC editado com sucesso",
-    "deleted_successfully": "NPC deletado com sucesso"
+    "deleted_successfully": "NPC deletado com sucesso",
+		"error_loading": "Error ao carregar NPCs"
   },
   "session": {
     "page_title": "Diários de Sessão",
