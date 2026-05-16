@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import NPCCard from "../npcCard/NPCCard";
 import listNpcs from "../../actions/listNpcs";
 import { INpc } from "../../types/INpc";
@@ -19,7 +19,7 @@ const NpcList = ({ campaignId, dict }: NpcListProps) => {
   const [npcs, setNpcs] = useState<INpc[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadNpcs = async () => {
+  const loadNpcs = useCallback(async () => {
     try {
       setIsLoading(true);
       const npcs = await listNpcs(campaignId);
@@ -31,11 +31,11 @@ const NpcList = ({ campaignId, dict }: NpcListProps) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [campaignId]);
 
   useEffect(() => {
     loadNpcs();
-  }, [campaignId, loadNpcs]); // fix: dependência corrigida (listNpcs e setNpcs são estáveis)
+  }, [loadNpcs]); // fix: dependência corrigida (listNpcs e setNpcs são estáveis)
 
   return (
     <div className="mt-8 flex w-full flex-col items-center gap-8">

@@ -82,7 +82,8 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
         <nav className="flex flex-col gap-0.5">
           {navbarLinks(dict, Boolean(isInCampaign), campaignId).map((route) => {
             const href = `/${lang}${route.href}`;
-            const active = isRouteActive(route.href);
+            const active = pathname.endsWith(`/${lang}/${route.href}`);
+            console.log("The pathname", pathname);
             const Icon = route.icon;
             return (
               <Link
