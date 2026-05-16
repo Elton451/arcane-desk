@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Button } from "@/shared/components/ui/button";
 import {
   Field,
@@ -13,6 +13,7 @@ import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Dictionary } from "@/shared/types/i18n";
 import { SessionSchema, SessionSchemaType } from "../../schemas/SessionSchema";
+import { TextEditor } from "@/shared/components/textEditor/Tiptap";
 
 interface SessionFormProps {
   dict: Dictionary;
@@ -24,6 +25,7 @@ const SessionForm = ({ dict, handleSubmit }: SessionFormProps) => {
     register,
     handleSubmit: formSubmit,
     formState: { errors },
+    control,
   } = useForm<SessionSchemaType>({
     resolver: zodResolver(SessionSchema),
     defaultValues: {
@@ -75,14 +77,17 @@ const SessionForm = ({ dict, handleSubmit }: SessionFormProps) => {
         </div>
 
         <Field data-invalid={!!errors.sessionSummary}>
-          <FieldLabel htmlFor="input-field-summary">
+          <FieldLabel htmlFor="input-field-description">
             {dict.session.label_summary}
           </FieldLabel>
-          <Textarea
-            id="input-field-summary"
-            placeholder={dict.session.placeholder_summary}
-            {...register("sessionSummary")}
+          <Controller
+            control={control}
+            name="sessionSummary"
+            render={({ field }) => (
+              <TextEditor value={field.value} onChange={field.onChange} />
+            )}
           />
+
           <FieldError errors={[errors.sessionSummary]} />
         </Field>
 

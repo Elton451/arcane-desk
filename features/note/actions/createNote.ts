@@ -2,10 +2,13 @@
 
 import { prisma } from "@/lib/prisma";
 import getUser from "@/shared/api/services/getUser";
+import DOMPurify from "isomorphic-dompurify";
 import { NoteSchema, NoteSchemaType } from "../schemas/NoteSchema";
 
 async function createNote(campaignId: number, formData: NoteSchemaType) {
   const user = await getUser();
+
+  const sanitizedContent = DOMPurify.sanitize(formData.content);
 
   const validation = NoteSchema.safeParse(formData);
   if (!validation.success) {
@@ -34,7 +37,7 @@ async function createNote(campaignId: number, formData: NoteSchemaType) {
   const note = await prisma.campaignNote.create({
     data: {
       title: validation.data.title,
-      content: validation.data.content,
+      content: sanitizedContent,
       category: validation.data.category,
       date: new Date(),
       campaign: {
