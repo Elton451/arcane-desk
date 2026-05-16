@@ -29,14 +29,12 @@ const NPCForm = ({ dict, npc, handleSubmit }: NPCFormProps) => {
     formState: { errors },
   } = useForm<NpcSchemaType>({
     resolver: zodResolver(NpcSchema),
-    defaultValues: npc
-      ? {
-          name: npc.name,
-          description: npc.description,
-          personality: npc.personality || undefined,
-          role: npc.role,
-        }
-      : {},
+    defaultValues: {
+      name: npc?.name || "",
+      description: npc?.description || "",
+      personality: npc?.personality || undefined,
+      role: npc?.role || "",
+    },
   });
 
   return (
