@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import listCampaign from "../../actions/listCampaign";
 import { CampaignCard } from "../CampaignCard/CampaignCard";
 import { Dictionary } from "@/shared/types/i18n";
 import { ICampaign } from "@/shared/api/models/ICampaign";
 import { Paginator } from "@/shared/components/paginator/Paginator";
 import { SkeletonBlock } from "@/shared/components/loading/Loading";
+import CreateCampaignModal from "../CampaignCreateModal/CampaignCreateModal";
+import { toast } from "sonner";
 
 interface CampaignListProps {
   dict: Dictionary;
@@ -21,51 +23,64 @@ const CampaignList = ({ dict }: CampaignListProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const campaignDict = dict.campaign;
 
-  useEffect(() => {
+  const loadCampaigns = useCallback(async () => {
     setIsLoading(true);
-    listCampaign({ page }).then(({ campaigns: rows, pagination }) => {
-      setCampaigns(rows as ICampaign[]);
-      const { total, size } = pagination;
+    try {
+      const data = await listCampaign({ page });
+      setCampaigns(data.campaigns as ICampaign[]);
+      const { total, size } = data.pagination;
       setTotalNumberOfPages(total === 0 ? 0 : Math.ceil(total / size));
       setIsLoading(false);
-    });
-  }, [page]);
+    } catch (error) {
+      console.error("Error while loading campaigns", error);
+      toast(campaignDict.error_loading_list);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [campaignDict, page]);
+
+  useEffect(() => {
+    loadCampaigns();
+  }, [loadCampaigns]);
 
   return (
-    <div className="mt-8 flex w-full flex-col items-center gap-8">
-      <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
-        {isLoading
-          ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-              <li key={i} className="list-none">
-                <SkeletonBlock layout="card" />
-              </li>
-            ))
-          : campaigns.map((campaign) => (
-              <li key={campaign.id} className="list-none">
-                <CampaignCard
-                  id={campaign.id}
-                  name={campaign.name}
-                  description={campaign.description ?? ""}
-                  createdAt={campaign.createdAt}
-                  labels={{
-                    createdAt: campaignDict.created_at,
-                    lastPlayedAt: campaignDict.last_played_at,
-                    continueCampaign: campaignDict.continue_campaign,
-                  }}
-                />
-              </li>
-            ))}
-      </ul>
+    <>
+      <CreateCampaignModal dict={dict} setCampaigns={setCampaigns} />
+      <div className="mt-8 flex w-full flex-col items-center gap-8">
+        <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
+          {isLoading
+            ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                <li key={i} className="list-none">
+                  <SkeletonBlock layout="card" />
+                </li>
+              ))
+            : campaigns.map((campaign) => (
+                <li key={campaign.id} className="list-none">
+                  <CampaignCard
+                    id={campaign.id}
+                    name={campaign.name}
+                    description={campaign.description ?? ""}
+                    createdAt={campaign.createdAt}
+                    labels={{
+                      createdAt: campaignDict.created_at,
+                      lastPlayedAt: campaignDict.last_played_at,
+                      continueCampaign: campaignDict.continue_campaign,
+                    }}
+                  />
+                </li>
+              ))}
+        </ul>
 
-      {!isLoading && totalNumberOfPages > 0 && (
-        <Paginator
-          dict={dict}
-          totalNumberOfPages={totalNumberOfPages}
-          currentPage={page}
-          onPageChange={setPage}
-        />
-      )}
-    </div>
+        {!isLoading && totalNumberOfPages > 0 && (
+          <Paginator
+            dict={dict}
+            totalNumberOfPages={totalNumberOfPages}
+            currentPage={page}
+            onPageChange={setPage}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

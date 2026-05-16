@@ -13,15 +13,20 @@ import CampaignForm from "../CampaignForm/CampaignForm";
 import { Plus } from "lucide-react";
 import createCampaign from "../../actions/createCampaign";
 import { CampaignFormType } from "../../schemas/CampaignFormSchema";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { toast } from "sonner";
 import { t } from "@/shared/i18n/interpolate";
+import { ICampaign } from "@/shared/api/models/ICampaign";
 
 interface CreateCampaignModalProps {
   dict: Dictionary;
+  setCampaigns: Dispatch<SetStateAction<ICampaign[]>>;
 }
 
-const CreateCampaignModal = ({ dict }: CreateCampaignModalProps) => {
+const CreateCampaignModal = ({
+  dict,
+  setCampaigns,
+}: CreateCampaignModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = async (formData: CampaignFormType) => {
@@ -33,6 +38,9 @@ const CreateCampaignModal = ({ dict }: CreateCampaignModalProps) => {
           name: mutation.data?.name,
         }),
       );
+      setCampaigns((prev) => {
+        return [...prev, { ...(mutation.data as ICampaign) }];
+      });
     } else {
       toast(dict.campaign.error_creating_campaign);
     }

@@ -5,24 +5,37 @@ import NPCCard from "../npcCard/NPCCard";
 import listNpcs from "../../actions/listNpcs";
 import { INpc } from "../../types/INpc";
 import { SkeletonBlock } from "@/shared/components/loading/Loading";
+import { toast } from "sonner";
+import { Dictionary } from "@/shared/types/i18n";
 
 interface NpcListProps {
   campaignId: number;
+  dict: Dictionary;
 }
 
 const SKELETON_COUNT = 3;
 
-const NpcList = ({ campaignId }: NpcListProps) => {
+const NpcList = ({ campaignId, dict }: NpcListProps) => {
   const [npcs, setNpcs] = useState<INpc[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    listNpcs(campaignId).then((npcs) => {
+  const loadNpcs = async () => {
+    try {
+      setIsLoading(true);
+      const npcs = await listNpcs(campaignId);
       setNpcs(npcs);
       setIsLoading(false);
-    });
-  }, [campaignId]); // fix: dependência corrigida (listNpcs e setNpcs são estáveis)
+    } catch (error) {
+      console.error("error while loading NPCs", error);
+      toast(dict.npc.error_loading);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadNpcs();
+  }, [campaignId, loadNpcs]); // fix: dependência corrigida (listNpcs e setNpcs são estáveis)
 
   return (
     <div className="mt-8 flex w-full flex-col items-center gap-8">

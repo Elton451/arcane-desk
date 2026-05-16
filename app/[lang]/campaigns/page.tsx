@@ -1,9 +1,6 @@
 import { getDictionary } from "@/shared/i18n/dictionaries";
 import { Params } from "@/shared/types/params.type";
-import {
-  CampaignList,
-  CreateCampaignModal,
-} from "@/features/campaign/components";
+import { CampaignList } from "@/features/campaign/components";
 import { Lang } from "@/shared/types/i18n";
 
 interface CampaignPageProps {
@@ -27,7 +24,6 @@ const CampaignsPage = async ({ params }: CampaignPageProps) => {
           </p>
         </header>
 
-        <CreateCampaignModal dict={dict} />
         <CampaignList dict={dict} />
       </section>
     </main>
