@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { INpc } from "../../types/INpc";
+import parse from "html-react-parser";
 
 interface NPCCardProps {
   npc: INpc;
@@ -11,7 +12,9 @@ const NPCCard = ({ npc }: NPCCardProps) => {
       <article className="bg-sidebar rounded-md p-5">
         <h3 className="text-lg font-semibold">{npc.name}</h3>
         <p className="text-muted-foreground text-sm">{npc.role}</p>
-        <p className="mt-2 line-clamp-3 max-h-20 text-sm">{npc.description}</p>
+        <p className="mt-2 line-clamp-3 max-h-20 text-sm">
+          {parse(npc.description)}
+        </p>
         {npc.personality ? (
           <p className="text-muted-foreground mt-2 text-sm">
             {npc.personality}

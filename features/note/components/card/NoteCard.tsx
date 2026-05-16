@@ -19,6 +19,7 @@ import { Dictionary } from "@/shared/types/i18n";
 import type { INote } from "../../types/INote";
 import { CATEGORY_BADGE_CLASSES } from "../../utils/categoryStyles";
 import { categoryLabelKey } from "../../utils/categoryLabels";
+import parse from "html-react-parser";
 
 interface NoteCardProps {
   note: INote;
@@ -82,7 +83,7 @@ const NoteCard = ({ note, dict, onDelete }: NoteCardProps) => {
       </div>
 
       <p className="text-muted-foreground mt-3 text-sm leading-relaxed whitespace-pre-wrap">
-        {note.content}
+        {parse(note.content)}
       </p>
     </article>
   );

@@ -22,7 +22,7 @@ const NPCPage = async ({ params }: NPCPageProps) => {
         </Button>
       </div>
       <div className="px-10">
-        <NpcList campaignId={Number(id)} />
+        <NpcList dict={dict} campaignId={Number(id)} />
       </div>
     </>
   );

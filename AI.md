@@ -8,33 +8,33 @@ Tabletop RPG campaign manager built with **Next.js 16** (App Router), **React 19
 
 Users authenticate via Auth0, sync to a local `User` record, and manage **campaigns** scoped to the owner. Each campaign has:
 
-| Domain   | Status in codebase | Route prefix (under campaign) |
-| -------- | ------------------ | ----------------------------- |
-| Campaign | Implemented        | `/campaigns`, `/campaign/[id]/dashboard` |
-| NPC      | Implemented        | `/campaign/[id]/npc`, `.../create`, `.../[npcId]`, `.../edit` |
-| Session  | Implemented        | `/campaign/[id]/session`, `.../create`, `.../[sessionId]` |
-| Notes / World building | Navbar links only | `/campaign/[id]/notes`, `.../world-building` |
+| Domain                 | Status in codebase | Route prefix (under campaign)                                 |
+| ---------------------- | ------------------ | ------------------------------------------------------------- |
+| Campaign               | Implemented        | `/campaigns`, `/campaign/[id]/dashboard`                      |
+| NPC                    | Implemented        | `/campaign/[id]/npc`, `.../create`, `.../[npcId]`, `.../edit` |
+| Session                | Implemented        | `/campaign/[id]/session`, `.../create`, `.../[sessionId]`     |
+| Notes / World building | Navbar links only  | `/campaign/[id]/notes`, `.../world-building`                  |
 
 ---
 
 ## Tech stack
 
-| Layer | Libraries |
-| ----- | --------- |
-| Framework | Next.js 16, React 19 |
-| Auth | `@auth0/nextjs-auth0` (`Auth0Client` in `lib/auth0.ts`) |
-| Database | Prisma 7 + `@prisma/adapter-pg` + `pg` |
-| Validation | Zod 4 |
-| Forms | `react-hook-form` + `@hookform/resolvers/zod` |
-| UI | shadcn/ui (Radix Vega style), Tailwind CSS 4, `class-variance-authority`, `clsx`, `tailwind-merge` |
-| Icons | `lucide-react` |
-| Toasts | `sonner` |
-| Rich text | TipTap 3 (`@tiptap/react`, StarterKit, TextStyle) |
-| Markdown display | `react-markdown` |
-| i18n | JSON dictionaries + `@formatjs/intl-localematcher` + `negotiator` |
-| Dates | `date-fns` |
-| Testing | Jest 30 + Testing Library + `next/jest` |
-| Quality | ESLint (Next config + Prettier), Husky, lint-staged, commitlint (conventional), dependency-cruiser |
+| Layer            | Libraries                                                                                          |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| Framework        | Next.js 16, React 19                                                                               |
+| Auth             | `@auth0/nextjs-auth0` (`Auth0Client` in `lib/auth0.ts`)                                            |
+| Database         | Prisma 7 + `@prisma/adapter-pg` + `pg`                                                             |
+| Validation       | Zod 4                                                                                              |
+| Forms            | `react-hook-form` + `@hookform/resolvers/zod`                                                      |
+| UI               | shadcn/ui (Radix Vega style), Tailwind CSS 4, `class-variance-authority`, `clsx`, `tailwind-merge` |
+| Icons            | `lucide-react`                                                                                     |
+| Toasts           | `sonner`                                                                                           |
+| Rich text        | TipTap 3 (`@tiptap/react`, StarterKit, TextStyle)                                                  |
+| Markdown display | `react-markdown`                                                                                   |
+| i18n             | JSON dictionaries + `@formatjs/intl-localematcher` + `negotiator`                                  |
+| Dates            | `date-fns`                                                                                         |
+| Testing          | Jest 30 + Testing Library + `next/jest`                                                            |
+| Quality          | ESLint (Next config + Prettier), Husky, lint-staged, commitlint (conventional), dependency-cruiser |
 
 ---
 
@@ -96,13 +96,13 @@ Keep pages **thin**: resolve `params`, load `dict`, compose feature components. 
 
 ## Path aliases (`tsconfig.json`)
 
-| Alias | Maps to |
-| ----- | ------- |
-| `@/*` | project root |
-| `@app/*` | `./app/*` |
+| Alias         | Maps to        |
+| ------------- | -------------- |
+| `@/*`         | project root   |
+| `@app/*`      | `./app/*`      |
 | `@features/*` | `./features/*` |
-| `@lib/*` | `./lib/*` |
-| `@shared/*` | `./shared/*` |
+| `@lib/*`      | `./lib/*`      |
+| `@shared/*`   | `./shared/*`   |
 
 Jest uses the same mappings in `jest.config.ts`. Prefer `@/features/...` and `@/shared/...` consistently with existing imports.
 
@@ -112,12 +112,12 @@ Jest uses the same mappings in `jest.config.ts`. Prefer `@/features/...` and `@/
 
 Run `npm run analyze` before large refactors. dependency-cruiser scans `./features`, `./lib`, and `./shared`.
 
-| Rule | Meaning |
-| ---- | ------- |
-| `cross-feature-import` | **Error** — no `features/foo` → `features/bar` |
-| `no-circular` | Warn — break cycles |
-| `not-to-dev-dep` | **Error** — production paths must not import devDependencies |
-| `not-to-spec` | **Error** — no importing test files from app code |
+| Rule                   | Meaning                                                      |
+| ---------------------- | ------------------------------------------------------------ |
+| `cross-feature-import` | **Error** — no `features/foo` → `features/bar`               |
+| `no-circular`          | Warn — break cycles                                          |
+| `not-to-dev-dep`       | **Error** — production paths must not import devDependencies |
+| `not-to-spec`          | **Error** — no importing test files from app code            |
 
 **Orphan modules** are warned except Next route files (`page`, `layout`, etc.).
 
@@ -201,11 +201,11 @@ List endpoints may return paginated shapes (see `listCampaign` → `ICampaignRes
 
 **Split responsibilities:**
 
-| Piece | Role | Directive |
-| ----- | ---- | --------- |
-| `*Form.tsx` | Presentational form, RHF + Zod resolver | `"use client"` |
-| `*CreateForm.tsx` / `*EditForm.tsx` | Calls server action, toast, `router.push` / `refresh` | `"use client"` |
-| `schemas/*.ts` | Zod schema + `z.infer` type | shared by client + server |
+| Piece                               | Role                                                  | Directive                 |
+| ----------------------------------- | ----------------------------------------------------- | ------------------------- |
+| `*Form.tsx`                         | Presentational form, RHF + Zod resolver               | `"use client"`            |
+| `*CreateForm.tsx` / `*EditForm.tsx` | Calls server action, toast, `router.push` / `refresh` | `"use client"`            |
+| `schemas/*.ts`                      | Zod schema + `z.infer` type                           | shared by client + server |
 
 - Use `useForm` + `zodResolver(Schema)` and shadcn `Field` / `FieldLabel` / `FieldError`.
 - TipTap fields: `Controller` + `TextEditor` from `@/shared/components/textEditor/Tiptap`.
@@ -255,14 +255,14 @@ Never import another feature folder directly.
 
 ## Tooling and git workflow
 
-| Command | Purpose |
-| ------- | ------- |
-| `npm run dev` | Dev server |
-| `npm run build` | Production build |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier (default config) |
+| Command           | Purpose                                   |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Dev server                                |
+| `npm run build`   | Production build                          |
+| `npm run lint`    | ESLint                                    |
+| `npm run format`  | Prettier (default config)                 |
 | `npm run analyze` | dependency-cruiser on features/lib/shared |
-| `npm test` | Jest |
+| `npm test`        | Jest                                      |
 
 - **Husky** + **lint-staged**: ESLint fix on staged `*.{js,jsx,ts,tsx}`.
 - **commitlint**: conventional commits (`commitlint.config.js`).
@@ -318,16 +318,16 @@ Typical requirements (exact names depend on Auth0 / deployment setup):
 
 ## Files to read first
 
-| File | Why |
-| ---- | --- |
-| `README.md` | Architecture overview |
-| `prisma/schema.prisma` | Data model |
-| `.dependency-cruiser.js` | Import boundaries |
-| `app/[lang]/layout.tsx` | Root shell, auth, i18n |
-| `features/campaign/actions/createCampaign.ts` | Canonical server action |
-| `features/npc/components/form/NPCCreateForm.tsx` | Canonical client mutation wrapper |
-| `features/campaign/components/CampaignForm/CampaignForm.tsx` | Canonical RHF form |
-| `components.json` | shadcn setup |
-| `proxy.ts` | Auth and locale middleware |
+| File                                                         | Why                               |
+| ------------------------------------------------------------ | --------------------------------- |
+| `README.md`                                                  | Architecture overview             |
+| `prisma/schema.prisma`                                       | Data model                        |
+| `.dependency-cruiser.js`                                     | Import boundaries                 |
+| `app/[lang]/layout.tsx`                                      | Root shell, auth, i18n            |
+| `features/campaign/actions/createCampaign.ts`                | Canonical server action           |
+| `features/npc/components/form/NPCCreateForm.tsx`             | Canonical client mutation wrapper |
+| `features/campaign/components/CampaignForm/CampaignForm.tsx` | Canonical RHF form                |
+| `components.json`                                            | shadcn setup                      |
+| `proxy.ts`                                                   | Auth and locale middleware        |
 
 This guide is derived from the current codebase; when patterns diverge in a file, follow the nearest existing feature implementation and keep boundaries consistent.

@@ -48,7 +48,7 @@ const navbarLinks = (
 
   return [
     {
-      href: "/campaigns",
+      href: "/",
       label: navbarDict.campaigns,
       icon: FolderKanban,
     },

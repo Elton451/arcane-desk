@@ -33,7 +33,7 @@ export async function proxy(request: NextRequest) {
   }
 
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    (locale) => pathname.startsWith(`/${locale}`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) return;

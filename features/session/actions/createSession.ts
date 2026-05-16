@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import getUser from "@/shared/api/services/getUser";
+import DOMPurify from "isomorphic-dompurify";
 import { SessionSchema, SessionSchemaType } from "../schemas/SessionSchema";
 
 const createSession = async (
@@ -9,6 +10,8 @@ const createSession = async (
   formData: SessionSchemaType,
 ) => {
   const user = await getUser();
+
+  const sanitizedSummary = DOMPurify.sanitize(formData.sessionSummary);
 
   const validation = SessionSchema.safeParse(formData);
   if (!validation.success) {
@@ -39,7 +42,7 @@ const createSession = async (
       title: validation.data.title,
       date: new Date(validation.data.date),
       numberOfPlayers: validation.data.numberOfPlayers,
-      sessionSummary: validation.data.sessionSummary,
+      sessionSummary: sanitizedSummary,
       highlights: validation.data.highlights || null,
       improvements: validation.data.improvements || null,
       notes: validation.data.notes || null,

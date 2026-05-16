@@ -2,6 +2,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { NpcSchema, NpcSchemaType } from "../schemas/NpcSchema";
+import DOMPurify from "isomorphic-dompurify";
+import { JSDOM } from "jsdom";
 import getUser from "@/shared/api/services/getUser";
 
 async function createNPC(campaignId: number, formData: NpcSchemaType) {
@@ -31,9 +33,13 @@ async function createNPC(campaignId: number, formData: NpcSchemaType) {
     };
   }
 
+  const window = new JSDOM("").window;
+  const purify = DOMPurify(window);
+  const sanitizedDescription = purify.sanitize(validation.data.description);
+
   const npc = await prisma.npc.create({
     data: {
-      description: formData.description,
+      description: sanitizedDescription,
       name: formData.name,
       role: formData.role,
       personality: formData.personality,

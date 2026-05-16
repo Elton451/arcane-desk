@@ -1,19 +1,25 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { NoteSchema, NoteSchemaType } from "../../schemas/NoteSchema";
 import {
   DEFAULT_NOTE_CATEGORY,
   NOTE_CATEGORIES,
 } from "../../types/NoteCategory";
-import { Field, FieldLabel, FieldSet } from "@/shared/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldLabel,
+  FieldSet,
+} from "@/shared/components/ui/field";
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Dictionary } from "@/shared/types/i18n";
 import { categoryLabelKey } from "../../utils/categoryLabels";
+import { TextEditor } from "@/shared/components/textEditor/Tiptap";
 
 interface NewNoteFormProps {
   dict: Dictionary;
@@ -22,16 +28,18 @@ interface NewNoteFormProps {
 }
 
 const NewNoteForm = ({ dict, onSubmit, isSubmitting }: NewNoteFormProps) => {
-  const { register, handleSubmit, reset, formState } = useForm<NoteSchemaType>({
-    resolver: zodResolver(NoteSchema),
-    mode: "onChange",
-    defaultValues: {
-      title: "",
-      content: "",
-      category: DEFAULT_NOTE_CATEGORY,
-    },
-  });
+  const { register, handleSubmit, reset, control, formState } =
+    useForm<NoteSchemaType>({
+      resolver: zodResolver(NoteSchema),
+      mode: "onChange",
+      defaultValues: {
+        title: "",
+        content: "",
+        category: DEFAULT_NOTE_CATEGORY,
+      },
+    });
 
+  const { errors } = formState;
   const isDisabled = isSubmitting || !formState.isValid;
 
   const handleFormSubmit = async (data: NoteSchemaType) => {
@@ -78,16 +86,19 @@ const NewNoteForm = ({ dict, onSubmit, isSubmitting }: NewNoteFormProps) => {
           </select>
         </Field>
 
-        <Field>
-          <FieldLabel htmlFor="note-content">
+        <Field data-invalid={!!errors.content}>
+          <FieldLabel htmlFor="input-field-description">
             {dict.note.label_content}
           </FieldLabel>
-          <Textarea
-            id="note-content"
-            placeholder={dict.note.placeholder_content}
-            rows={5}
-            {...register("content")}
+          <Controller
+            control={control}
+            name="content"
+            render={({ field }) => (
+              <TextEditor value={field.value} onChange={field.onChange} />
+            )}
           />
+
+          <FieldError errors={[errors.content]} />
         </Field>
       </FieldSet>
 
