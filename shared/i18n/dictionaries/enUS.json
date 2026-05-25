@@ -203,6 +203,11 @@
     "stat_active_campaigns": "Active Campaigns",
     "stat_total_sessions": "Total Sessions",
     "stat_npcs_created": "NPCs Created",
+    "save_profile": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "update_success": "Profile updated.",
+    "update_error": "Failed to update profile.",
     "themes": {
       "nord": "Nord",
       "dracula": "Dracula",

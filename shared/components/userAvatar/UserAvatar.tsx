@@ -75,7 +75,7 @@ const UserAvatar = ({ dict, user }: UserAvatarProps) => {
             "group-hover/avatar:text-accent-text",
           )}
         >
-          {user.name}
+          {user.displayName}
         </span>
         <span
           className={cn(
