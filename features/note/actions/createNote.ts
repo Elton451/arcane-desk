@@ -3,7 +3,6 @@
 import { prisma } from "@/lib/prisma";
 import getUser from "@/shared/api/services/getUser";
 import DOMPurify from "isomorphic-dompurify";
-import { JSDOM } from "jsdom";
 import { NoteSchema, NoteSchemaType } from "../schemas/NoteSchema";
 
 async function createNote(campaignId: number, formData: NoteSchemaType) {
@@ -33,8 +32,7 @@ async function createNote(campaignId: number, formData: NoteSchemaType) {
     };
   }
 
-  const window = new JSDOM("").window;
-  const purify = DOMPurify(window);
+  const purify = DOMPurify();
   const sanitizedContent = purify.sanitize(validation.data.content);
 
   const note = await prisma.campaignNote.create({
