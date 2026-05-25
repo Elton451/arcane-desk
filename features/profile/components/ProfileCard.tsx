@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Avatar,
   AvatarFallback,
@@ -10,6 +12,15 @@ import { IUserDTO } from "@/shared/api/models/IUser";
 import { Dictionary } from "@/shared/types/i18n";
 import getInitials from "@/shared/utils/getInitials.utils";
 import ProfileSection from "./ProfileSection";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  UpdateProfileSchema,
+  UpdateProfileData,
+} from "@/features/profile/schemas/updateProfile.schema";
+import updateProfile from "@/features/profile/actions/updateProfile";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface ProfileCardProps {
   dict: Dictionary;
@@ -18,21 +29,34 @@ interface ProfileCardProps {
 
 const ProfileCard = ({ dict, user }: ProfileCardProps) => {
   const profileDict = dict.profile;
+  const router = useRouter();
   const displayName = user.displayName || user.name || "";
   const initials = getInitials(displayName || user.name || "?");
 
-  const fields = [
-    {
-      id: "display-name",
-      label: profileDict.display_name,
-      value: displayName,
-    },
-    {
-      id: "email",
-      label: profileDict.email,
-      value: user.email ?? "",
-    },
-  ];
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting, isDirty },
+  } = useForm<UpdateProfileData>({
+    resolver: zodResolver(UpdateProfileSchema),
+    defaultValues: { displayName },
+  });
+
+  const onSubmit = async (data: UpdateProfileData) => {
+    const result = await updateProfile(data);
+
+    if (!result.success) {
+      toast.error(profileDict.update_error);
+      return;
+    }
+
+    toast.success(profileDict.update_success);
+    reset(data);
+    router.refresh();
+  };
+
+  const handleCancel = () => reset();
 
   return (
     <ProfileSection>
@@ -51,31 +75,54 @@ const ProfileCard = ({ dict, user }: ProfileCardProps) => {
         </div>
       </div>
 
-      <div className="mt-6 space-y-4">
-        {fields.map((field) => (
-          <div
-            key={field.id}
-            className="flex items-center justify-between gap-4"
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
+        <div className="flex items-center justify-between gap-4">
+          <Label
+            htmlFor="display-name"
+            className="text-muted-foreground shrink-0 text-sm font-medium"
           >
-            <Label
-              htmlFor={field.id}
-              className="text-muted-foreground shrink-0 text-sm font-medium"
-            >
-              {field.label}
-            </Label>
-            <Input
-              id={field.id}
-              readOnly
-              value={field.value}
-              className="bg-input/50 h-8 max-w-[220px] rounded-full border px-3 text-right text-sm shadow-none"
-            />
-          </div>
-        ))}
-      </div>
+            {profileDict.display_name}
+          </Label>
+          <Input
+            id="display-name"
+            {...register("displayName")}
+            className="bg-input/50 h-8 max-w-55 rounded-full border px-3 text-right text-sm shadow-none"
+          />
+        </div>
 
-      <Button variant="outline" size="sm" className="mt-5">
-        {profileDict.edit_profile}
-      </Button>
+        <div className="flex items-center justify-between gap-4">
+          <Label
+            htmlFor="email"
+            className="text-muted-foreground shrink-0 text-sm font-medium"
+          >
+            {profileDict.email}
+          </Label>
+          <Input
+            id="email"
+            value={user.email ?? ""}
+            readOnly
+            className="bg-input/50 text-muted-foreground h-8 max-w-55 rounded-full border px-3 text-right text-sm shadow-none"
+          />
+        </div>
+
+        <div className="flex gap-2 pt-1">
+          <Button type="submit" size="sm" disabled={!isDirty || isSubmitting}>
+            {isSubmitting ? profileDict.saving : profileDict.save_profile}
+          </Button>
+
+          {isDirty && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={handleCancel}
+              disabled={isSubmitting}
+            >
+              {profileDict.cancel}
+            </Button>
+          )}
+        </div>
+      </form>
     </ProfileSection>
   );
 };

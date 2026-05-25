@@ -2,8 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
+import { Plus, X } from "lucide-react";
 import createNote from "../actions/createNote";
 import deleteNote from "../actions/deleteNote";
+import updateNote from "../actions/updateNote";
 import listNotes from "../actions/listNotes";
 import { NoteSchemaType } from "../schemas/NoteSchema";
 import type { INote } from "../types/INote";
@@ -13,6 +15,7 @@ import NoteFilterBar from "./filter/NoteFilterBar";
 import NotesList from "./list/NotesList";
 import { Dictionary } from "@/shared/types/i18n";
 import { t } from "@/shared/i18n/interpolate";
+import { Button } from "@/shared/components/ui/button";
 
 interface NotesPageProps {
   dict: Dictionary;
@@ -24,6 +27,7 @@ const NotesPage = ({ dict, campaignId }: NotesPageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeFilter, setActiveFilter] = useState<NoteFilterValue>("ALL");
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const loadNotes = useCallback(async () => {
     setIsLoading(true);
@@ -42,16 +46,12 @@ const NotesPage = ({ dict, campaignId }: NotesPageProps) => {
   }, [loadNotes]);
 
   const filteredNotes = useMemo(() => {
-    if (activeFilter === "ALL") {
-      return notes;
-    }
+    if (activeFilter === "ALL") return notes;
     return notes.filter((note) => note.category === activeFilter);
   }, [notes, activeFilter]);
 
   const emptyMessage = useMemo(() => {
-    if (notes.length === 0) {
-      return dict.note.empty_list;
-    }
+    if (notes.length === 0) return dict.note.empty_list;
     return dict.note.empty_filtered;
   }, [notes.length, dict.note.empty_list, dict.note.empty_filtered]);
 
@@ -65,6 +65,7 @@ const NotesPage = ({ dict, campaignId }: NotesPageProps) => {
       toast(
         t(dict.note.note_created_successfully, { title: result.data.title }),
       );
+      setIsFormOpen(false);
       return;
     }
 
@@ -83,13 +84,54 @@ const NotesPage = ({ dict, campaignId }: NotesPageProps) => {
     toast(dict.note.error_deleting);
   };
 
+  const handleEdit = async (
+    noteId: number,
+    data: NoteSchemaType,
+  ): Promise<boolean> => {
+    const result = await updateNote(noteId, data);
+
+    if (result.success && result.data) {
+      setNotes((current) =>
+        current.map((n) => (n.id === noteId ? result.data : n)),
+      );
+      toast(dict.note.note_updated_successfully);
+      return true;
+    }
+
+    toast(dict.note.error_updating);
+    return false;
+  };
+
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
-      <NewNoteForm
-        dict={dict}
-        onSubmit={handleCreate}
-        isSubmitting={isSubmitting}
-      />
+      <div className="space-y-3">
+        <Button
+          variant={isFormOpen ? "outline" : "default"}
+          size="sm"
+          onClick={() => setIsFormOpen((prev) => !prev)}
+          className="w-full"
+        >
+          {isFormOpen ? (
+            <>
+              <X className="size-4" />
+              {dict.note.hide_form}
+            </>
+          ) : (
+            <>
+              <Plus className="size-4" />
+              {dict.note.add_note}
+            </>
+          )}
+        </Button>
+
+        {isFormOpen && (
+          <NewNoteForm
+            dict={dict}
+            onSubmit={handleCreate}
+            isSubmitting={isSubmitting}
+          />
+        )}
+      </div>
 
       <section className="space-y-4">
         <NoteFilterBar
@@ -103,6 +145,7 @@ const NotesPage = ({ dict, campaignId }: NotesPageProps) => {
           isLoading={isLoading}
           emptyMessage={emptyMessage}
           onDelete={handleDelete}
+          onEdit={handleEdit}
         />
       </section>
     </div>
