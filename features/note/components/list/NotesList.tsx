@@ -4,6 +4,7 @@ import { SkeletonBlock } from "@/shared/components/loading/Loading";
 import { Dictionary } from "@/shared/types/i18n";
 import type { INote } from "../../types/INote";
 import NoteCard from "../card/NoteCard";
+import { NoteSchemaType } from "../../schemas/NoteSchema";
 
 interface NotesListProps {
   notes: INote[];
