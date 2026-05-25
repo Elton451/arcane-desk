@@ -71,7 +71,7 @@ const Navbar = ({ campaignId, campaignName, dict, user }: NavbarProps) => {
               className="text-muted-foreground hover:text-foreground mt-1 h-7 w-full justify-start gap-1.5 rounded-md px-2 text-xs"
               asChild
             >
-              <Link href="/campaigns">
+              <Link href="/">
                 <ArrowLeft aria-hidden className="size-3 shrink-0" />
                 {navbarDict.change_campaign}
               </Link>
