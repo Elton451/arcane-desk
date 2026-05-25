@@ -11,6 +11,7 @@ interface NotesListProps {
   isLoading: boolean;
   emptyMessage: string;
   onDelete: (id: number) => void;
+  onEdit: (id: number, data: NoteSchemaType) => Promise<boolean>;
 }
 
 const SKELETON_COUNT = 3;
@@ -21,6 +22,7 @@ const NotesList = ({
   isLoading,
   emptyMessage,
   onDelete,
+  onEdit,
 }: NotesListProps) => {
   if (isLoading) {
     return (
@@ -46,7 +48,12 @@ const NotesList = ({
     <ul className="max-h-[32rem] space-y-3 overflow-y-auto pr-1">
       {notes.map((note) => (
         <li key={note.id} className="list-none">
-          <NoteCard note={note} dict={dict} onDelete={onDelete} />
+          <NoteCard
+            note={note}
+            dict={dict}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          />
         </li>
       ))}
     </ul>

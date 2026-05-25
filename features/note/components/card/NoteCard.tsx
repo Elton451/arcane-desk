@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { format } from "date-fns";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,51 +20,91 @@ import { Dictionary } from "@/shared/types/i18n";
 import type { INote } from "../../types/INote";
 import { CATEGORY_BADGE_CLASSES } from "../../utils/categoryStyles";
 import { categoryLabelKey } from "../../utils/categoryLabels";
+import { NoteSchemaType } from "../../schemas/NoteSchema";
+import EditNoteForm from "../form/EditNoteForm";
 import parse from "html-react-parser";
 
 interface NoteCardProps {
   note: INote;
   dict: Dictionary;
   onDelete: (id: number) => void;
+  onEdit: (id: number, data: NoteSchemaType) => Promise<boolean>;
 }
 
-const NoteCard = ({ note, dict, onDelete }: NoteCardProps) => {
+const NoteCard = ({ note, dict, onDelete, onEdit }: NoteCardProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleEdit = async (data: NoteSchemaType) => {
+    setIsSubmitting(true);
+    const success = await onEdit(note.id, data);
+    setIsSubmitting(false);
+    if (success) setIsEditing(false);
+  };
+
+  if (isEditing) {
+    return (
+      <article className="border-border bg-card rounded-lg border px-5 py-4">
+        <EditNoteForm
+          dict={dict}
+          note={note}
+          onSubmit={handleEdit}
+          onCancel={() => setIsEditing(false)}
+          isSubmitting={isSubmitting}
+        />
+      </article>
+    );
+  }
+
   return (
     <article className="border-border bg-card group relative rounded-lg border px-5 py-4">
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            className="text-muted-foreground hover:text-destructive absolute top-3 right-3 size-7 opacity-0 transition-opacity group-hover:opacity-100"
-            aria-label={dict.common.delete}
-          >
-            <Trash2 className="size-3.5" />
-          </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              {dict.note.delete_confirm_title}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {dict.note.delete_confirm}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>{dict.common.cancel}</AlertDialogCancel>
-            <AlertDialogAction
-              variant="destructive"
-              onClick={() => onDelete(note.id)}
-            >
-              {dict.common.delete}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <div className="absolute top-3 right-3 flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="text-muted-foreground hover:text-foreground size-7"
+          aria-label={dict.common.edit}
+          onClick={() => setIsEditing(true)}
+        >
+          <Pencil className="size-3.5" />
+        </Button>
 
-      <h3 className="pr-8 text-base font-bold">{note.title}</h3>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-destructive size-7"
+              aria-label={dict.common.delete}
+            >
+              <Trash2 className="size-3.5" />
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                {dict.note.delete_confirm_title}
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                {dict.note.delete_confirm}
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>{dict.common.cancel}</AlertDialogCancel>
+              <AlertDialogAction
+                variant="destructive"
+                onClick={() => onDelete(note.id)}
+              >
+                {dict.common.delete}
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+
+      <h3 className="pr-16 text-base font-bold">{note.title}</h3>
 
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <span

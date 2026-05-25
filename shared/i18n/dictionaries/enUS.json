@@ -4,7 +4,10 @@
     "next": "Next",
     "edit": "Edit",
     "cancel": "Cancel",
-    "delete": "Delete"
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "saving": "Saving..."
   },
   "navbar": {
     "subtitle": "Campaign Manager",
@@ -115,7 +118,10 @@
       "item": "Item",
       "session": "Session",
       "lore": "Lore"
-    }
+    },
+    "note_updated_successfully": "Note updated.",
+    "error_updating": "Failed to update note.",
+		"hide_form": "Esconder Criador"
   },
   "world_building": {
     "page_title": "World Building",

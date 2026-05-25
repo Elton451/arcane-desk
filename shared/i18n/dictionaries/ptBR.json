@@ -4,7 +4,9 @@
     "next": "Próximo",
     "delete": "Deletar",
     "edit": "Editar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+		"save": "Salvar",
+		"saving": "Salvando..."
   },
   "navbar": {
     "subtitle": "Gerenciador de campanhas",
@@ -59,7 +61,7 @@
     "show_description": "Mostrar descrição",
     "updated_successfully": "NPC editado com sucesso",
     "deleted_successfully": "NPC deletado com sucesso",
-		"error_loading": "Error ao carregar NPCs"
+    "error_loading": "Error ao carregar NPCs"
   },
   "session": {
     "page_title": "Diários de Sessão",
@@ -116,7 +118,10 @@
       "item": "Item",
       "session": "Sessão",
       "lore": "Lore"
-    }
+    },
+    "note_updated_successfully": "Nota atualizada.",
+    "error_updating": "Erro ao atualizar nota",
+		"hide_form": "Fechar Nota"
   },
   "world_building": {
     "page_title": "Criação de Mundo",
